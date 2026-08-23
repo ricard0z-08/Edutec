@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcoClima — DEVs</title>
+<meta name="description" content="Quem nós somos: os estudantes por trás do EcoClima.">
+<link rel="icon" href="imagens/Logo-preto.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wdth,wght@62..125,100..900&family=DM+Sans:opsz,wght@9..40,300..800&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js");</script>
+<!-- style.css traz a identidade (variáveis, navbar, footer); dev.css só o que é desta página -->
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="dev.css">
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <nav class="nav__group nav__group--left" aria-label="Navegação principal">
+      <a class="nav__link" href="entraves.html">Entraves</a>
+      <a class="nav__link" href="#" data-soon>Jogo</a>
+      <a class="nav__link" href="#" data-soon>Notícias</a>
+    </nav>
+
+    <a class="nav__logo" href="index.html" id="logoHome" aria-label="EcoClima — voltar para a home">
+      <img class="nav__logo-img nav__logo-img--light" src="imagens/Logo-branco.png" alt="EcoClima">
+      <img class="nav__logo-img nav__logo-img--dark" src="imagens/Logo-preto.png" alt="">
+    </a>
+
+    <nav class="nav__group nav__group--right" aria-label="Navegação secundária">
+      <a class="nav__link" href="#" data-soon>Timeline</a>
+      <a class="nav__link is-active" href="dev.html" aria-current="page">DEVs</a>
+    </nav>
+
+    <button class="nav__burger" id="navBurger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a class="nav__mlink" href="entraves.html">Entraves</a>
+    <a class="nav__mlink" href="#" data-soon>Jogo</a>
+    <a class="nav__mlink" href="#" data-soon>Notícias</a>
+    <a class="nav__mlink" href="#" data-soon>Timeline</a>
+    <a class="nav__mlink is-active" href="dev.html" aria-current="page">DEVs</a>
+  </div>
+</header>
+
+<!-- ============ DEVS ============ -->
+<main class="devs" id="top" data-nav="dark">
+  <div class="wrap">
+    <h1 class="devs__title reveal-up">Quem nós somos?</h1>
+
+    <ul class="devs__list">
+
+      <li class="dev-card reveal-up">
+        <img class="dev-card__photo" src="imagens/Imagens-tela-devs/Imagem-DEV-Ricardo.jpg" alt="Foto de Ricardo Castro Xavier de Brito" loading="lazy">
+        <div class="dev-card__info">
+          <h2 class="dev-card__name">Ricardo Castro Xavier de Brito</h2>
+          <p class="dev-card__place">São Paulo, SP</p>
+          <p class="dev-card__age">16 anos</p>
+          <blockquote class="dev-card__quote">“Apesar do curso, busco outros caminhos de carreira, direito parece mais atrativo”</blockquote>
+          <p class="dev-card__social">
+            <img class="dev-card__ig" src="imagens/Imagens-tela-devs/logo-instagram.png" alt="Instagram" loading="lazy">
+            <span>ricardoxavierdebrito</span>
+          </p>
+        </div>
+      </li>
+
+      <li class="dev-card reveal-up">
+        <img class="dev-card__photo" src="imagens/Imagens-tela-devs/Imagem-DEV-Flavio.jpeg" alt="Foto de Flávio Henrique da Costa Silva" loading="lazy">
+        <div class="dev-card__info">
+          <h2 class="dev-card__name">Flávio Henrique da Costa Silva</h2>
+          <p class="dev-card__place">São João Evangelista, MG</p>
+          <p class="dev-card__age">16 anos</p>
+          <blockquote class="dev-card__quote">“Gosto do curso mais não pretendo seguir nessa área, medicina aparenta ser mais desafiador, aliás cuidar da vida é a forma mais bonita de servir ao mundo.”</blockquote>
+          <p class="dev-card__social">
+            <img class="dev-card__ig" src="imagens/Imagens-tela-devs/logo-instagram.png" alt="Instagram" loading="lazy">
+            <span>flavix.h01</span>
+          </p>
+        </div>
+      </li>
+
+      <li class="dev-card reveal-up">
+        <img class="dev-card__photo" src="imagens/Imagens-tela-devs/Imagem-DEV-Gustavo.jpeg" alt="Foto de Gustavo Lino Silva" loading="lazy">
+        <div class="dev-card__info">
+          <h2 class="dev-card__name">Gustavo Lino Silva</h2>
+          <p class="dev-card__place">São Paulo, SP</p>
+          <p class="dev-card__age">18 anos</p>
+          <blockquote class="dev-card__quote">“Não quero continuar na área, pretendo fazer engenharia da computação, acho mais interessante.”</blockquote>
+          <p class="dev-card__social">
+            <img class="dev-card__ig" src="imagens/Imagens-tela-devs/logo-instagram.png" alt="Instagram" loading="lazy">
+            <span>ohguss</span>
+          </p>
+        </div>
+      </li>
+
+      <li class="dev-card reveal-up">
+        <img class="dev-card__photo" src="imagens/Imagens-tela-devs/Imagem-DEV-Luan.jpeg" alt="Foto de Luan Nogueira Cavalcante" loading="lazy">
+        <div class="dev-card__info">
+          <h2 class="dev-card__name">Luan Nogueira Cavalcante</h2>
+          <p class="dev-card__place">São Paulo, SP</p>
+          <p class="dev-card__age">16 anos</p>
+          <blockquote class="dev-card__quote">“Não quero continuar na área, pretendo fazer gastronomia, criar arte pelo paladar”</blockquote>
+          <p class="dev-card__social">
+            <img class="dev-card__ig" src="imagens/Imagens-tela-devs/logo-instagram.png" alt="Instagram" loading="lazy">
+            <span>_l.nan</span>
+          </p>
+        </div>
+      </li>
+
+      <li class="dev-card reveal-up">
+        <img class="dev-card__photo" src="imagens/Imagens-tela-devs/Imagem-DEV-Leonardo.jpeg" alt="Foto de Leonardo Maia de Almeida" loading="lazy">
+        <div class="dev-card__info">
+          <h2 class="dev-card__name">Leonardo Maia de Almeida</h2>
+          <p class="dev-card__place">São Paulo, SP</p>
+          <p class="dev-card__age">16 anos</p>
+          <blockquote class="dev-card__quote">“Até gosto de TI, mas tem outras coisas mais importantes. E quando eu terminar a escola, quero melhorar individualmente nas coisas que pretendo.”</blockquote>
+          <p class="dev-card__social">
+            <img class="dev-card__ig" src="imagens/Imagens-tela-devs/logo-instagram.png" alt="Instagram" loading="lazy">
+            <span>leonardo.mz_11</span>
+          </p>
+        </div>
+      </li>
+
+      <li class="dev-card reveal-up">
+        <img class="dev-card__photo" src="imagens/Imagens-tela-devs/Imagem-DEV-Samuel.jpeg" alt="Foto de Samuel da Silva Pereira" loading="lazy">
+        <div class="dev-card__info">
+          <h2 class="dev-card__name">Samuel da Silva Pereira</h2>
+          <p class="dev-card__place">São Paulo, SP</p>
+          <p class="dev-card__age">16 anos</p>
+          <blockquote class="dev-card__quote">“Pretendo continuar no TI, quero cursar Engenharia de Software”</blockquote>
+          <p class="dev-card__social">
+            <img class="dev-card__ig" src="imagens/Imagens-tela-devs/logo-instagram.png" alt="Instagram" loading="lazy">
+            <span>samuel.da.silva.p521</span>
+          </p>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" data-nav="dark">
+  <div class="wrap">
+    <h2 class="footer__word">ECOCLIMA</h2>
+    <hr class="footer__rule">
+    <div class="footer__bottom">
+      <p class="footer__text">A EcoClima oferece soluções em climatização e eficiência energética para proporcionar mais conforto, economia e sustentabilidade. Nosso compromisso é unir tecnologia e responsabilidade ambiental para criar ambientes mais eficientes e agradáveis. © 2026 EcoClima. Todos os direitos reservados.</p>
+      <button class="badge" type="button" data-soon>PT-BR</button>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="dev.js"></script>
+</body>
+</html>

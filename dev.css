@@ -1,0 +1,130 @@
+/* =========================================================
+   ECOCLIMA — Página DEVs
+   Só o que é específico desta página.
+   Variáveis, navbar, footer e degradês vêm do style.css.
+   ========================================================= */
+
+body{ background: var(--cream); }
+
+/* ---------- Bloco principal ---------- */
+.devs{
+  background: var(--cream);
+  /* espaço para a navbar fixa + respiro antes do título */
+  padding-top: clamp(8rem, 16vh, 12rem);
+  padding-bottom: clamp(4rem, 10vh, 7rem);
+}
+
+.devs__title{
+  font-family: var(--f-body);
+  font-size: clamp(2.2rem, 5.6vw, 4rem);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -.035em;
+  color: var(--ink);
+  margin-bottom: clamp(2.2rem, 5vw, 3.6rem);
+}
+
+.devs__list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: clamp(1.8rem, 3.6vw, 2.9rem);
+}
+
+/* ---------- Card ---------- */
+.dev-card{
+  display: flex;
+  align-items: center;
+  gap: clamp(1.2rem, 3vw, 2.6rem);
+  padding: clamp(1.4rem, 2.6vw, 2rem) clamp(1.4rem, 3vw, 2.4rem);
+  background: var(--sand);
+  border: 1px solid var(--green);          /* contorno fino da identidade */
+  border-radius: 12px;
+  box-shadow: 9px 9px 0 var(--green);      /* sombra sólida deslocada */
+  transition: transform .42s var(--ease), box-shadow .42s var(--ease);
+}
+/* mesmo efeito dos cards de "Por que confiar?" da home */
+.dev-card:hover{
+  transform: translateY(-12px);
+  box-shadow: 13px 15px 0 var(--green);
+}
+
+.dev-card__photo{
+  flex: 0 0 auto;
+  width: clamp(92px, 12vw, 140px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--line-str);
+  background: var(--cream-2);
+}
+
+/* usado pelo dev.js quando uma foto não carrega */
+.dev-card__photo--vazia{
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--green);
+  background: var(--cream-2);
+}
+
+.dev-card__info{ min-width: 0; }
+
+.dev-card__name{
+  font-size: clamp(1rem, 1.6vw, 1.22rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -.015em;
+  color: var(--ink);
+}
+.dev-card__place{
+  margin-top: .18rem;
+  font-size: clamp(.86rem, 1.1vw, .96rem);
+  font-weight: 700;
+  color: var(--ink);
+}
+.dev-card__age{
+  margin-top: .12rem;
+  font-size: .86rem;
+  color: var(--ink-2);
+}
+.dev-card__quote{
+  margin: .85rem 0 0;
+  max-width: 54ch;
+  font-size: .84rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.dev-card__social{
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: 1.1rem;
+  font-size: .82rem;
+  color: var(--ink-2);
+}
+.dev-card__ig{
+  width: 18px; height: 18px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+/* O destaque do item ativo da navbar mora no style.css,
+   porque agora é usado também pela página Entraves. */
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 640px){
+  /* em telas pequenas a foto sobe para cima do texto */
+  .dev-card{
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 1.1rem;
+  }
+  .dev-card__photo{ width: 104px; }
+  .dev-card__quote{ max-width: none; }
+  .dev-card{ box-shadow: 7px 7px 0 var(--green); }
+  .dev-card:hover{ box-shadow: 10px 12px 0 var(--green); }
+}

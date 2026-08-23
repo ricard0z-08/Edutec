@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcoClima — Respire Futuro</title>
+<meta name="description" content="EcoClima — um projeto sobre meio ambiente e mudanças climáticas. Informação confiável, criativa e feita para inspirar atitude.">
+<link rel="icon" href="imagens/Logo-preto.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wdth,wght@62..125,100..900&family=DM+Sans:opsz,wght@9..40,300..800&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js");</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <nav class="nav__group nav__group--left" aria-label="Navegação principal">
+      <a class="nav__link" href="entraves.html">Entraves</a>
+      <a class="nav__link" href="#" data-soon>Jogo</a>
+      <a class="nav__link" href="#" data-soon>Notícias</a>
+    </nav>
+
+    <a class="nav__logo" href="#top" id="logoHome" aria-label="EcoClima — voltar ao topo">
+      <img class="nav__logo-img nav__logo-img--light" src="imagens/Logo-branco.png" alt="EcoClima">
+      <img class="nav__logo-img nav__logo-img--dark" src="imagens/Logo-preto.png" alt="">
+    </a>
+
+    <nav class="nav__group nav__group--right" aria-label="Navegação secundária">
+      <a class="nav__link" href="#" data-soon>Timeline</a>
+      <a class="nav__link" href="dev.html">DEVs</a>
+    </nav>
+
+    <button class="nav__burger" id="navBurger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a class="nav__mlink" href="entraves.html">Entraves</a>
+    <a class="nav__mlink" href="#" data-soon>Jogo</a>
+    <a class="nav__mlink" href="#" data-soon>Notícias</a>
+    <a class="nav__mlink" href="#" data-soon>Timeline</a>
+    <a class="nav__mlink" href="dev.html">DEVs</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top" data-nav="light">
+  <img class="hero__img" src="imagens/Imagens-tela-home/arvores-home.jpg" alt="Alameda de árvores altas em um parque iluminado pelo sol" fetchpriority="high">
+  <div class="hero__veil" aria-hidden="true"></div>
+
+  <div class="hero__content">
+    <h1 class="hero__title">RESPIRE FUTURO</h1>
+    <p class="hero__kicker">Para todos que se importam com o planeta</p>
+  </div>
+
+  <a class="hero__scroll" href="#acontece" aria-label="Rolar para a próxima seção">
+    <span class="hero__scroll-line" aria-hidden="true"></span>
+    <span class="hero__scroll-txt">role</span>
+  </a>
+</section>
+
+<!-- ============ O QUE ACONTECE ============ -->
+<section class="section section--problems" id="acontece" data-nav="dark">
+  <div class="wrap">
+    <p class="label reveal-up">O que acontece?</p>
+    <hr class="rule reveal-up">
+    <h2 class="h2 reveal-up">Existem muitos problemas com o nosso planeta :(</h2>
+    <p class="lead reveal-up">Mas isso não é motivo de tristeza! Cada um de nós podemos cuidar um pouquinho da nossa terra!</p>
+    <hr class="rule reveal-up">
+    <p class="quote reveal-up">“Algo sempre parece impossível até que seja realizado.” <span>— Nelson Mandela</span></p>
+    <a class="link-arrow reveal-up" href="#" data-soon>Veja algumas notícias <span class="link-arrow__i" aria-hidden="true">→</span></a>
+  </div>
+
+  <div class="carousel reveal-up" id="carousel">
+    <div class="carousel__viewport" id="carViewport">
+      <div class="carousel__track" id="carTrack">
+        <figure class="slide"><img src="imagens/Imagens-tela-home/Carrosel-1.jpg" alt="Registro dos impactos ambientais no planeta" draggable="false" loading="lazy"></figure>
+        <figure class="slide"><img src="imagens/Imagens-tela-home/Carrosel-2.jpg" alt="Registro dos impactos ambientais no planeta" draggable="false" loading="lazy"></figure>
+        <figure class="slide"><img src="imagens/Imagens-tela-home/Carrosel-3.jpg" alt="Registro dos impactos ambientais no planeta" draggable="false" loading="lazy"></figure>
+        <figure class="slide"><img src="imagens/Imagens-tela-home/Carrosel-4.jpg" alt="Registro dos impactos ambientais no planeta" draggable="false" loading="lazy"></figure>
+        <figure class="slide"><img src="imagens/Imagens-tela-home/Carrosel-5.jpg" alt="Registro dos impactos ambientais no planeta" draggable="false" loading="lazy"></figure>
+        <figure class="slide"><img src="imagens/Imagens-tela-home/Carrosel-6.jpg" alt="Registro dos impactos ambientais no planeta" draggable="false" loading="lazy"></figure>
+        <figure class="slide"><img src="imagens/Imagens-tela-home/Carrosel-7.jpg" alt="Registro dos impactos ambientais no planeta" draggable="false" loading="lazy"></figure>
+      </div>
+    </div>
+
+    <div class="carousel__ui">
+      <button class="cbtn" id="carPrev" type="button" aria-label="Imagem anterior">←</button>
+      <div class="dots" id="carDots"></div>
+      <button class="cbtn" id="carNext" type="button" aria-label="Próxima imagem">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ A SOLUÇÃO ============ -->
+<section class="section section--solution" id="solucao" data-nav="dark">
+  <div class="wrap wrap--narrow">
+    <p class="label label--center reveal-up">A solução?</p>
+    <p class="solution__sub reveal-up">Ela está mais <strong>perto</strong> do que pensa</p>
+
+    <p class="reveal-text" id="revealText">VOCÊ NÃO PRECISA <img class="inline-img" src="imagens/Imagens-tela-home/homem-bicicleta-texto.jpg" alt="Pessoa andando de bicicleta" loading="lazy"> ESPERAR POR <img class="inline-img" src="imagens/Imagens-tela-home/jardinagem-texto.jpg" alt="Mãos cuidando de plantas" loading="lazy"> SOLUÇÕES DISTANTES. CADA ESCOLHA SUA — COMO CONSOME, SE DESLOCA, DESCARTA — <img class="inline-img" src="imagens/Imagens-tela-home/lixeiras-texto.jpg" alt="Lixeiras coloridas de coleta seletiva" loading="lazy"> MOLDA O FUTURO DO PLANETA. COMECE HOJE. A <img class="inline-img" src="imagens/Imagens-tela-home/pessoas-texto.jpg" alt="Pessoas trabalhando juntas" loading="lazy"> TERRA QUE QUEREMOS DEPENDE DE VOCÊ.</p>
+
+    <p class="solution__closing reveal-up">Nenhum gesto é pequeno demais. Juntos, esses hábitos constroem a mudança que o planeta precisa.</p>
+    <a class="link-arrow link-arrow--green reveal-up" href="#" data-soon>Saiba mais <span class="link-arrow__i" aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<!-- ============ POR QUE CONFIAR ============ -->
+<section class="section section--trust" id="confiar" data-nav="dark">
+  <div class="wrap">
+    <h2 class="h1 reveal-up">Por que<br>confiar?</h2>
+    <p class="muted reveal-up">Falemos um pouco das nossas qualidades também né?</p>
+  </div>
+
+  <div class="marquee" id="marquee">
+    <div class="marquee__track" id="marqueeTrack">
+
+      <article class="card card--sand">
+        <span class="card__icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21c0-5 1-8 6-11-6 0-9 2-10 6"/><path d="M12 21c0-4-2-7-6-8 0-4 3-6 7-6"/></svg>
+        </span>
+        <h3 class="card__title">Conteúdo de qualidade</h3>
+        <p class="card__text">Informações claras, relevantes e baseadas em fontes confiáveis, tornando o aprendizado mais fácil e interessante.</p>
+      </article>
+
+      <article class="card card--cream">
+        <span class="card__icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.6.6 1 1.5 1 2.5h6c0-1 .4-1.9 1-2.5A6 6 0 0 0 12 3z"/></svg>
+        </span>
+        <h3 class="card__title">Criatividade e inovação</h3>
+        <p class="card__text">Um projeto pensado para apresentar o tema de forma dinâmica, moderna e diferente, tornando a experiência mais envolvente.</p>
+      </article>
+
+      <article class="card card--sand">
+        <span class="card__icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/></svg>
+        </span>
+        <h3 class="card__title">Conscientização</h3>
+        <p class="card__text">Nosso trabalho busca informar e incentivar atitudes mais responsáveis em relação ao meio ambiente e ao futuro do planeta.</p>
+      </article>
+
+      <article class="card card--cream">
+        <span class="card__icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-8 8H4l2-3a8 8 0 1 1 15-5z"/><path d="M9 11h6"/><path d="M9 8h4"/></svg>
+        </span>
+        <h3 class="card__title">Linguagem acessível</h3>
+        <p class="card__text">Explicamos assuntos complexos de um jeito simples e direto, para que qualquer pessoa consiga entender e participar da conversa.</p>
+      </article>
+
+      <article class="card card--sand">
+        <span class="card__icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M22 20H2"/></svg>
+        </span>
+        <h3 class="card__title">Dados atualizados</h3>
+        <p class="card__text">Acompanhamos relatórios, pesquisas e conferências recentes para trazer sempre o cenário mais atual das mudanças climáticas.</p>
+      </article>
+
+      <article class="card card--cream">
+        <span class="card__icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="12" rx="4"/><path d="M7 11v4"/><path d="M5 13h4"/><circle cx="16" cy="12" r="1"/><circle cx="18.5" cy="14.5" r="1"/></svg>
+        </span>
+        <h3 class="card__title">Aprender jogando</h3>
+        <p class="card__text">Um jogo integrado transforma o conteúdo em experiência prática, fixando o aprendizado de um jeito leve e divertido.</p>
+      </article>
+
+      <article class="card card--sand">
+        <span class="card__icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.3-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.7-7 9-7 9z"/></svg>
+        </span>
+        <h3 class="card__title">Feito com propósito</h3>
+        <p class="card__text">Mais do que um trabalho de escola, é um compromisso real com o lugar onde a gente vive e com quem vem depois da gente.</p>
+      </article>
+
+    </div>
+  </div>
+  <p class="marquee__hint">segure o <strong>botão esquerdo</strong> para pausar</p>
+</section>
+
+<!-- ============ ESPAÇO ============ -->
+<section class="section section--space" id="terra" data-nav="light">
+  <div class="space__stars" id="spaceStars" aria-hidden="true"></div>
+  <div class="space__sun" aria-hidden="true"></div>
+
+  <img class="space__sat space__sat--1" src="imagens/Imagens-tela-home/satelite-terra-dois.png" alt="" aria-hidden="true" loading="lazy">
+  <img class="space__sat space__sat--2" src="imagens/Imagens-tela-home/satelite-terra-tres.png" alt="" aria-hidden="true" loading="lazy">
+  <img class="space__sat space__sat--3" src="imagens/Imagens-tela-home/satelite-terra-quatro.png" alt="" aria-hidden="true" loading="lazy">
+  <img class="space__sat space__sat--4" src="imagens/Imagens-tela-home/Satelite-terra.png" alt="" aria-hidden="true" loading="lazy">
+
+  <!-- frase circular girando em torno da curvatura -->
+  <div class="space__ring" id="spaceRing" aria-hidden="true">
+    <svg viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet">
+      <defs><path id="ringPath" d="M 500,60 a 440,440 0 1,1 -0.1,0" fill="none"></path></defs>
+      <text><textPath id="ringText" href="#ringPath" startOffset="0"></textPath></text>
+    </svg>
+  </div>
+  <p class="sr-only">Seja o futuro.</p>
+
+  <!-- Terra cortada ao meio, girando sozinha -->
+  <div class="space__planet" id="planetStage">
+    <div class="space__ball" id="planetFallback" hidden></div>
+  </div>
+</section>
+
+<!-- ============ FAQs ============ -->
+<section class="section section--faq" id="faqs" data-nav="dark">
+  <div class="wrap faq">
+    <div class="faq__side">
+      <h2 class="h1 reveal-up">FAQs</h2>
+      <img class="faq__earth reveal-up" src="imagens/Imagens-tela-home/Desenho-terra-FAQS.png" alt="Desenho de linha do planeta Terra" loading="lazy">
+    </div>
+
+    <div class="faq__list" id="faqList">
+
+      <div class="faq__item">
+        <button class="faq__q" type="button" aria-expanded="false">
+          <span>De onde vêm essas informações?</span>
+          <span class="faq__ico" aria-hidden="true"></span>
+        </button>
+        <div class="faq__a"><div><p>Reunimos dados de instituições reconhecidas como o IPCC, a ONU, o INPE e o Instituto Nacional de Meteorologia, além de veículos jornalísticos e pesquisas acadêmicas. Sempre que possível, indicamos a origem para você poder conferir por conta própria.</p></div></div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q" type="button" aria-expanded="false">
+          <span>O que posso fazer para ajudar o meio ambiente?</span>
+          <span class="faq__ico" aria-hidden="true"></span>
+        </button>
+        <div class="faq__a"><div><p>Comece pelo que está ao seu alcance: separe o lixo reciclável, evite desperdício de água e energia, prefira caminhar, pedalar ou usar transporte público, repense o consumo por impulso e cuide das áreas verdes perto de você. Conversar sobre o assunto também conta — informação vira atitude.</p></div></div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q" type="button" aria-expanded="false">
+          <span>Pequenas atitudes realmente fazem diferença?</span>
+          <span class="faq__ico" aria-hidden="true"></span>
+        </button>
+        <div class="faq__a"><div><p>Sim. Sozinha, uma atitude parece pequena — mas ela se multiplica. Hábitos individuais mudam a demanda por produtos, pressionam empresas e influenciam políticas públicas. Além disso, atitude gera exemplo: quem está por perto tende a repetir.</p></div></div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q" type="button" aria-expanded="false">
+          <span>O que acontece se a temperatura do planeta continuar aumentando?</span>
+          <span class="faq__ico" aria-hidden="true"></span>
+        </button>
+        <div class="faq__a"><div><p>O aquecimento intensifica eventos extremos: secas mais longas, chuvas e enchentes mais violentas, ondas de calor, derretimento de geleiras e elevação do nível do mar. Isso afeta a produção de alimentos, a saúde das pessoas e a biodiversidade — por isso o esforço mundial para limitar o aquecimento a 1,5 °C.</p></div></div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q" type="button" aria-expanded="false">
+          <span>O que são as COPs?</span>
+          <span class="faq__ico" aria-hidden="true"></span>
+        </button>
+        <div class="faq__a"><div><p>COP significa “Conferência das Partes”, o encontro anual dos países que assinaram a convenção do clima da ONU. É nela que se negociam metas de redução de emissões, financiamento e adaptação — foi de uma COP que saiu o Acordo de Paris, em 2015.</p></div></div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q" type="button" aria-expanded="false">
+          <span>As informações são confiáveis?</span>
+          <span class="faq__ico" aria-hidden="true"></span>
+        </button>
+        <div class="faq__a"><div><p>O EcoClima reúne informações baseadas em fontes confiáveis e seguras, garantindo conteúdo de qualidade, atualizado e responsável para você se informar sobre o meio ambiente e as mudanças climáticas.</p></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" data-nav="dark">
+  <div class="wrap">
+    <h2 class="footer__word">ECOCLIMA</h2>
+    <hr class="footer__rule">
+    <div class="footer__bottom">
+      <p class="footer__text">A EcoClima oferece soluções em climatização e eficiência energética para proporcionar mais conforto, economia e sustentabilidade. Nosso compromisso é unir tecnologia e responsabilidade ambiental para criar ambientes mais eficientes e agradáveis. © 2026 EcoClima. Todos os direitos reservados.</p>
+      <button class="badge" type="button" data-soon>PT-BR</button>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcoClima — Entraves dessa Luta</title>
+<meta name="description" content="Os principais entraves ambientais: desmatamento, derretimento de geleiras, mudanças climáticas e poluição por resíduos sólidos.">
+<link rel="icon" href="imagens/Logo-preto.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wdth,wght@62..125,100..900&family=DM+Sans:opsz,wght@9..40,300..800&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js");</script>
+<!-- style.css traz a identidade (variáveis, navbar, footer); entraves.css só o que é desta página -->
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="entraves.css">
+</head>
+<body class="pagina-escura">
+
+<!-- ============ NAVBAR ============ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <nav class="nav__group nav__group--left" aria-label="Navegação principal">
+      <a class="nav__link is-active" href="entraves.html" aria-current="page">Entraves</a>
+      <a class="nav__link" href="#" data-soon>Jogo</a>
+      <a class="nav__link" href="#" data-soon>Notícias</a>
+    </nav>
+
+    <a class="nav__logo" href="index.html" id="logoHome" aria-label="EcoClima — voltar para a home">
+      <img class="nav__logo-img nav__logo-img--light" src="imagens/Logo-branco.png" alt="EcoClima">
+      <img class="nav__logo-img nav__logo-img--dark" src="imagens/Logo-preto.png" alt="">
+    </a>
+
+    <nav class="nav__group nav__group--right" aria-label="Navegação secundária">
+      <a class="nav__link" href="#" data-soon>Timeline</a>
+      <a class="nav__link" href="dev.html">DEVs</a>
+    </nav>
+
+    <button class="nav__burger" id="navBurger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a class="nav__mlink is-active" href="entraves.html" aria-current="page">Entraves</a>
+    <a class="nav__mlink" href="#" data-soon>Jogo</a>
+    <a class="nav__mlink" href="#" data-soon>Notícias</a>
+    <a class="nav__mlink" href="#" data-soon>Timeline</a>
+    <a class="nav__mlink" href="dev.html">DEVs</a>
+  </div>
+</header>
+
+<!-- ============ ENTRAVES ============ -->
+<main class="entraves" id="top" data-nav="light">
+  <div class="wrap">
+    <h1 class="entraves__title reveal-up">Entraves dessa Luta</h1>
+
+    <ul class="entraves__list">
+
+      <li class="entrave entrave--esq reveal-up">
+        <article class="entrave__card">
+          <img class="entrave__img" src="imagens/Imagem-tela-entraves/Imagem-desmatamento-entraves.jpg" alt="Troncos de árvores derrubadas em área desmatada" loading="lazy">
+          <div class="entrave__veil" aria-hidden="true"></div>
+          <div class="entrave__body">
+            <h2 class="entrave__title">Desmatamento</h2>
+            <p class="entrave__text">É a remoção total ou parcial da cobertura vegetal nativa, causada principalmente por ações humanas como pecuária, agricultura, mineração e expansão urbana. Ele provoca graves danos ambientais, como perda de biodiversidade, emissão de gases do efeito estufa e alteração do clima.</p>
+            <p class="entrave__quote">O silêncio da floresta depois do desmatamento é o grito mais alto da Terra.</p>
+          </div>
+        </article>
+      </li>
+
+      <li class="entrave entrave--dir reveal-up">
+        <article class="entrave__card">
+          <img class="entrave__img" src="imagens/Imagem-tela-entraves/Imagem-derretimento-entraves.jpg" alt="Pinguim sobre bloco de gelo em degelo" loading="lazy">
+          <div class="entrave__veil" aria-hidden="true"></div>
+          <div class="entrave__body">
+            <h2 class="entrave__title">Derretimento de geleiras</h2>
+            <p class="entrave__text">É a perda acelerada de massas de gelo continental causada pelo aquecimento global e pelo aumento das temperaturas na Terra. Esse fenômeno reduz as reservas globais de água doce, eleva o nível dos oceanos e ameaça o equilíbrio climático mundial.</p>
+            <p class="entrave__quote">O gelo que some hoje é a água que falta amanhã.</p>
+          </div>
+        </article>
+      </li>
+
+      <li class="entrave entrave--esq reveal-up">
+        <article class="entrave__card">
+          <img class="entrave__img" src="imagens/Imagem-tela-entraves/Imagem-secas-entraves.jpg" alt="Solo rachado por seca prolongada" loading="lazy">
+          <div class="entrave__veil" aria-hidden="true"></div>
+          <div class="entrave__body">
+            <h2 class="entrave__title">Mudanças Climáticas</h2>
+            <p class="entrave__text">São alterações de longo prazo nos padrões de temperatura e clima do planeta. Elas ocorrem principalmente pela ação humana, como a queima de combustíveis fósseis e o desmatamento, que liberam gases de efeito estufa na atmosfera e aumentam o aquecimento global.</p>
+            <p class="entrave__quote">A natureza não pede socorro. Ela simplesmente se vinga.</p>
+          </div>
+        </article>
+      </li>
+
+      <li class="entrave entrave--dir reveal-up">
+        <article class="entrave__card">
+          <img class="entrave__img" src="imagens/Imagem-tela-entraves/Imagem-solidos-entraves.jpg" alt="Montanha de sacos de lixo em descarte irregular" loading="lazy">
+          <div class="entrave__veil" aria-hidden="true"></div>
+          <div class="entrave__body">
+            <h2 class="entrave__title">Poluição por resíduos sólidos</h2>
+            <p class="entrave__text">Ocorre pelo descarte inadequado de lixo urbano, industrial ou hospitalar. Ela contamina o solo e a água subterrânea por meio do chorume, polui o ar com queimas irregulares e espalha doenças graves através de vetores como ratos e insetos.</p>
+            <p class="entrave__quote">Poluição por resíduos sólidos: o preço que pagamos por consumir sem pensar.</p>
+          </div>
+        </article>
+      </li>
+
+    </ul>
+  </div>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer footer--dark" data-nav="light">
+  <div class="wrap">
+    <h2 class="footer__word">ECOCLIMA</h2>
+    <hr class="footer__rule">
+    <div class="footer__bottom">
+      <p class="footer__text">A EcoClima oferece soluções em climatização e eficiência energética para proporcionar mais conforto, economia e sustentabilidade. Nosso compromisso é unir tecnologia e responsabilidade ambiental para criar ambientes mais eficientes e agradáveis. © 2026 EcoClima. Todos os direitos reservados.</p>
+      <button class="badge" type="button" data-soon>PT-BR</button>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="entraves.js"></script>
+</body>
+</html>
