@@ -1,0 +1,474 @@
+/* =========================================================
+   ECOCLIMA — Página Timeline
+   Fundo claro, cards de painel verde-escuro e rodapé preto.
+
+   O laranja das telas do Figma virou o verde profundo da
+   identidade (o mesmo do style.css). A terracota, que a
+   base.css já reserva para os selos das COPs, ficou só nos
+   detalhes: o fio do tempo, os nós e as etiquetas.
+
+   Variáveis, navbar e footer vêm do base.css e do style.css.
+   ========================================================= */
+
+:root{
+  --tl-painel:   #24593B;   /* topo do painel do card */
+  --tl-painel-2: #1B4029;   /* base do painel — dá profundidade sem sombra dura */
+  --tl-marco:    #2B6947;   /* painel das COPs que viraram divisor de águas */
+  --tl-tinta:    #F2EDE3;   /* texto sobre o painel */
+  --tl-selo:     #E3A87F;   /* terracota clareada, para ler sobre o verde */
+  --tl-preto:    #12140F;   /* rodapé: preto levemente quente, para não brigar com o creme */
+  --tl-raio:     18px;
+  --tl-gap:      clamp(2.4rem, 5.5vw, 4.2rem);   /* vão entre os cards = onde mora o nó */
+}
+
+.tl-pagina{
+  background: var(--claro);
+  color: var(--verde-escuro);
+}
+
+/* etiqueta pequena que abre as seções */
+.tl-etiqueta{
+  font-size: .76rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--terracota);
+  margin: 0;
+}
+
+/* =========================================================
+   1. Topo
+   ========================================================= */
+.tl-topo{
+  position: relative;
+  isolation: isolate;                 /* prende o brilho de fundo aqui dentro */
+  overflow: hidden;
+  text-align: center;
+  padding-top: clamp(8rem, 17vh, 12rem);
+  padding-bottom: clamp(2.5rem, 7vh, 4.5rem);
+}
+/* clarão verde bem diluído atrás do título */
+.tl-topo::before{
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -22%;
+  left: 50%;
+  width: min(900px, 96vw);
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(36, 89, 59, .11), rgba(36, 89, 59, 0) 62%);
+  pointer-events: none;
+}
+
+.tl-topo__titulo{
+  font-family: var(--f-display);
+  font-variation-settings: 'wdth' 84, 'wght' 800;
+  font-size: clamp(3.4rem, 15vw, 11rem);
+  line-height: .86;
+  letter-spacing: -.03em;
+  color: var(--verde-escuro);
+  margin: .5rem 0 0;
+}
+.tl-topo__texto{
+  font-size: clamp(1.15rem, 2.6vw, 1.7rem);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -.015em;
+  color: var(--verde-escuro);
+  max-width: 24ch;
+  margin: clamp(1rem, 2.4vw, 1.5rem) auto 0;
+}
+.tl-topo__nota{
+  font-size: .98rem;
+  line-height: 1.65;
+  color: var(--cinza);
+  max-width: 58ch;
+  margin: 1rem auto 0;
+}
+
+/* "começar em 1992": fiozinho com uma gota descendo sem parar */
+.tl-topo__rolar{
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .8rem;
+  margin-top: clamp(2rem, 5vh, 3.2rem);
+  font-size: .76rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--cinza);
+  transition: color .35s var(--ease);
+}
+.tl-topo__rolar:hover{ color: var(--terracota); }
+.tl-topo__rolar-linha{
+  position: relative;
+  width: 1px;
+  height: 58px;
+  overflow: hidden;
+  background: rgba(15, 26, 16, .14);
+}
+.tl-topo__rolar-linha::after{
+  content: "";
+  position: absolute;
+  left: 0; top: -45%;
+  width: 100%; height: 45%;
+  background: var(--terracota);
+  animation: tl-gota 2.2s var(--ease) infinite;
+}
+@keyframes tl-gota{
+  0%   { transform: translateY(0);    opacity: 0; }
+  18%  { opacity: 1; }
+  82%  { opacity: 1; }
+  100% { transform: translateY(322%); opacity: 0; }
+}
+
+/* =========================================================
+   2. Trilha e fio do tempo
+   O fio corre atrás da lista; como os cards são opacos, ele
+   só aparece nos vãos — que é onde ficam os nós.
+   ========================================================= */
+.tl-corpo{
+  position: relative;
+  padding-bottom: clamp(3rem, 8vh, 5rem);
+}
+
+.tl-trilha{ position: relative; }
+
+.tl-fio{
+  position: absolute;
+  left: 50%; top: 0; bottom: 0;
+  z-index: 0;
+  width: 2px;
+  margin-left: -1px;
+  background: rgba(15, 26, 16, .11);
+  border-radius: 2px;
+}
+/* a parte colorida cresce conforme a pessoa desce (altura vem do JS) */
+.tl-fio__ativo{
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 0;
+  border-radius: 2px;
+  background: linear-gradient(to bottom, rgba(168, 74, 44, .2), var(--terracota));
+}
+
+.tl-lista{
+  position: relative;
+  z-index: 1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--tl-gap);
+}
+
+.tl-item{ position: relative; }
+
+/* o nó: fica no meio do vão, exatamente sobre o fio */
+.tl-item::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--tl-gap) / -2 - 8px);
+  width: 16px; height: 16px;
+  margin-left: -8px;
+  border-radius: 50%;
+  background: var(--claro);
+  border: 2px solid rgba(15, 26, 16, .18);
+  transition: background .55s var(--ease), border-color .55s var(--ease), transform .55s var(--ease);
+}
+/* depois do último card não há vão nenhum, então não há nó */
+.tl-item:last-child::after{ content: none; }
+
+.tl-item.is-passado::after{
+  background: var(--terracota);
+  border-color: var(--terracota);
+  transform: scale(1.16);
+}
+
+/* =========================================================
+   3. Card
+   O .tl-item cuida da entrada por rolagem; o .tl-card cuida
+   do hover. Separar os dois evita briga entre os transforms
+   (mesma ideia da página Entraves).
+   ========================================================= */
+.tl-card{
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.04fr .96fr;
+  min-height: clamp(340px, 34vw, 450px);
+  border-radius: var(--tl-raio);
+  overflow: hidden;
+  background: var(--claro);
+  box-shadow: 0 22px 46px -32px rgba(18, 26, 16, .55);
+  transition: transform .55s var(--ease), box-shadow .55s var(--ease), opacity .85s var(--ease);
+}
+/* espelha as colunas quando o painel vai para a direita,
+   senão o lado mais largo trocaria de lugar a cada card */
+.tl-item--dir .tl-card{ grid-template-columns: .96fr 1.04fr; }
+.tl-item--dir .tl-card__painel{ order: 2; }
+.tl-item--dir .tl-card__arte{ order: 1; }
+
+.tl-card__painel{
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.5rem, 3vw, 2.6rem);
+  background: linear-gradient(155deg, var(--tl-painel) 0%, var(--tl-painel-2) 100%);
+  color: var(--tl-tinta);
+}
+/* Paris e Belém: o mesmo verde, um tom acima — um destaque
+   discreto para as duas COPs que viraram divisor de águas */
+.tl-item--marco .tl-card__painel{
+  background: linear-gradient(155deg, var(--tl-marco) 0%, #1D4630 100%);
+}
+
+.tl-card__selo{
+  font-size: .74rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--tl-selo);
+  margin: 0;
+}
+.tl-card__ano{
+  font-family: var(--f-display);
+  font-variation-settings: 'wdth' 86, 'wght' 800;
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  line-height: .9;
+  letter-spacing: -.03em;
+  color: #fff;
+  margin: .4rem 0 0;
+}
+.tl-card__local{
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  color: rgba(242, 237, 227, .9);
+  margin: .3rem 0 0;
+}
+.tl-card__resumo{
+  font-size: .95rem;
+  line-height: 1.68;
+  color: rgba(242, 237, 227, .74);
+  max-width: 48ch;
+  margin: clamp(.9rem, 2vw, 1.3rem) 0 0;
+}
+
+/* os dois fatos ficam grudados na base do painel */
+.tl-fatos{
+  display: grid;
+  gap: .85rem;
+  margin: auto 0 0;
+  padding-top: clamp(1.1rem, 2.4vw, 1.7rem);
+}
+.tl-fato{
+  display: grid;
+  gap: .22rem;
+  padding-top: .8rem;
+  border-top: 1px solid rgba(242, 237, 227, .16);   /* contorno fino, nunca sombra */
+}
+.tl-fato dt{
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--tl-selo);
+}
+.tl-fato dd{
+  margin: 0;
+  font-size: .9rem;
+  line-height: 1.6;
+  color: rgba(242, 237, 227, .76);
+}
+
+.tl-card__arte{
+  position: relative;
+  overflow: hidden;                  /* segura a imagem no parallax */
+  margin: 0;
+  background: var(--areia);
+}
+.tl-card__img{
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  /* 12% a mais dá folga para o parallax mexer sem mostrar borda;
+     o deslocamento em si vem do js/timeline.js */
+  transform: scale(1.12);
+  will-change: transform;
+}
+
+/* =========================================================
+   4. Fecho
+   ========================================================= */
+.tl-fecho{
+  max-width: 64ch;
+  margin: clamp(4rem, 10vh, 7rem) auto 0;
+  text-align: center;
+}
+.tl-fecho__texto{
+  font-size: 1.05rem;
+  line-height: 1.72;
+  color: var(--cinza);
+  margin: 1rem 0 1.9rem;
+}
+
+/* =========================================================
+   5. Atalho lateral com os anos
+   Montado pelo js/timeline.js a partir dos cards: para incluir
+   uma COP nova basta acrescentar o <li> no HTML.
+   ========================================================= */
+.tl-atalho{
+  position: fixed;
+  right: clamp(.75rem, 2vw, 1.7rem);
+  top: 50%;
+  z-index: 60;
+  transform: translateY(-50%);
+  display: grid;
+  gap: .1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .5s var(--ease);
+}
+.tl-atalho[hidden]{ display: none; }        /* vence o display:grid de cima */
+.tl-atalho.is-visivel{ opacity: 1; pointer-events: auto; }
+
+.tl-atalho__item{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: .5rem;
+  padding: .26rem .1rem;
+}
+.tl-atalho__ano{
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: var(--cinza);
+  opacity: 0;
+  transform: translateX(6px);
+  transition: opacity .35s var(--ease), transform .35s var(--ease), color .35s var(--ease);
+}
+.tl-atalho__traco{
+  width: 16px; height: 2px;
+  border-radius: 2px;
+  background: rgba(15, 26, 16, .22);
+  transition: width .35s var(--ease), background .35s var(--ease);
+}
+.tl-atalho__item:hover .tl-atalho__ano,
+.tl-atalho__item:focus-visible .tl-atalho__ano,
+.tl-atalho__item.is-atual .tl-atalho__ano{ opacity: 1; transform: none; }
+.tl-atalho__item:hover .tl-atalho__traco{ width: 26px; }
+.tl-atalho__item.is-atual .tl-atalho__ano{ color: var(--terracota); }
+.tl-atalho__item.is-atual .tl-atalho__traco{ width: 30px; background: var(--terracota); }
+
+/* =========================================================
+   6. Cabeçalho e rodapé
+   ========================================================= */
+
+/* a barra fixa passa por cima de cards verde-escuros; nesta
+   página o fundo dela precisa ser mais firme, senão o texto
+   escuro some quando um card está atrás */
+.tl-pagina .nav.is-stuck{ background: rgba(245, 240, 235, .84); }
+
+/* O layout.js já entrega o rodapé na variante escura; aqui ele
+   ganha o fundo de verdade, porque a página é clara. */
+.tl-pagina .footer--dark{
+  background: var(--tl-preto);
+  /* a linha de links usa color:inherit; sem esta cor ela herdaria
+     o texto escuro da página e sumiria dentro do preto */
+  color: var(--cream);
+  border-radius: 28px 28px 0 0;
+  margin-top: clamp(3rem, 8vh, 6rem);
+}
+
+/* =========================================================
+   7. Movimento
+   Tudo que esconde conteúdo mora atrás de .js: sem JavaScript
+   a página aparece inteira, sem depender de classe nenhuma.
+   ========================================================= */
+.js .tl-entra{
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .8s var(--ease), transform .8s var(--ease);
+}
+.js .tl-entra.is-dentro{ opacity: 1; transform: none; }
+
+/* o card entra pelo lado em que ele está */
+.js .tl-card{
+  opacity: 0;
+  transform: translateX(-38px) scale(.985);
+}
+.js .tl-item--dir .tl-card{ transform: translateX(38px) scale(.985); }
+.js .tl-item.is-dentro .tl-card{ opacity: 1; transform: none; }
+
+/* o hover só vale depois que o card chegou, senão os dois
+   transforms se atropelam no meio da entrada */
+.js .tl-item.is-dentro .tl-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 30px 54px -32px rgba(18, 26, 16, .6);
+}
+
+/* dentro do painel, cada linha entra logo depois da anterior */
+.js .tl-card__painel > *{
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .7s var(--ease), transform .7s var(--ease);
+}
+.js .tl-item.is-dentro .tl-card__painel > *{ opacity: 1; transform: none; }
+.js .tl-item.is-dentro .tl-card__painel > *:nth-child(1){ transition-delay: .12s; }
+.js .tl-item.is-dentro .tl-card__painel > *:nth-child(2){ transition-delay: .19s; }
+.js .tl-item.is-dentro .tl-card__painel > *:nth-child(3){ transition-delay: .25s; }
+.js .tl-item.is-dentro .tl-card__painel > *:nth-child(4){ transition-delay: .31s; }
+.js .tl-item.is-dentro .tl-card__painel > *:nth-child(5){ transition-delay: .37s; }
+
+/* a arte revela junto, num tempo um pouco mais longo */
+.js .tl-card__img{
+  opacity: 0;
+  transition: opacity 1s var(--ease);
+}
+.js .tl-item.is-dentro .tl-card__img{ opacity: 1; }
+
+/* =========================================================
+   8. Responsivo
+   ========================================================= */
+@media (max-width: 860px){
+  .tl-card,
+  .tl-item--dir .tl-card{
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  /* no celular a arte vem sempre em cima, dos dois lados */
+  .tl-card__arte,
+  .tl-item--dir .tl-card__arte{ order: 1; aspect-ratio: 16 / 9; }
+  .tl-card__painel,
+  .tl-item--dir .tl-card__painel{ order: 2; }
+
+  /* a entrada lateral fica menor: em tela estreita, 38px cortam demais */
+  .js .tl-card,
+  .js .tl-item--dir .tl-card{ transform: translateY(22px) scale(.99); }
+
+  .tl-card__resumo{ max-width: none; }
+}
+
+@media (max-width: 1179px){
+  .tl-atalho{ display: none; }
+}
+
+@media (max-width: 560px){
+  .tl-item::after{ width: 13px; height: 13px; margin-left: -6.5px;
+                   bottom: calc(var(--tl-gap) / -2 - 6.5px); }
+}
+
+/* =========================================================
+   9. Quem pediu menos animação no sistema
+   ========================================================= */
+@media (prefers-reduced-motion: reduce){
+  .js .tl-entra,
+  .js .tl-card,
+  .js .tl-card__painel > *,
+  .js .tl-card__img{ opacity: 1; transform: none; }
+  .js .tl-card__img{ transform: scale(1.12); }
+  .tl-topo__rolar-linha::after{ animation: none; opacity: .5; transform: translateY(120%); }
+}

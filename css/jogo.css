@@ -1,0 +1,192 @@
+/* =========================================================
+   ECOCLIMA — Jogo
+   Duas telas simples: a escolha (jogo.html) e a tela de cada
+   jogo (jogo-coleta.html, jogo-quiz.html).
+
+   Por enquanto o botão "Jogar" não faz nada — o jogo em si
+   ainda vai ser feito. A estrutura já está pronta para receber
+   o canvas/o jogo dentro de .jg-palco.
+
+   Variáveis, botões e cards base vêm do base.css.
+   Navbar e rodapé vêm do style.css + js/layout.js.
+   ========================================================= */
+
+.jg-pagina{
+  background: var(--claro);
+  color: var(--verde-escuro);
+}
+
+/* etiqueta pequena que abre as telas (mesma ideia da timeline) */
+.jg-etiqueta{
+  font-size: .74rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--verde);
+  margin: 0;
+}
+
+/* =========================================================
+   1. Topo — vale para as duas telas
+   ========================================================= */
+.jg-topo{
+  /* a navbar é fixa e não ocupa fluxo: o padding de cima é o
+     que impede o título de nascer atrás dela */
+  padding-top: clamp(7rem, 15vh, 10rem);
+  padding-bottom: clamp(1.6rem, 4vh, 2.6rem);
+  text-align: center;
+}
+.jg-topo__titulo{
+  font-family: var(--f-display);
+  font-variation-settings: 'wdth' 86, 'wght' 800;
+  font-size: clamp(2.6rem, 9vw, 5.5rem);
+  line-height: .92;
+  letter-spacing: -.03em;
+  margin: .3rem 0 0;
+}
+.jg-topo__texto{
+  max-width: 52ch;
+  font-size: clamp(.98rem, 1.7vw, 1.1rem);
+  color: var(--cinza);
+  margin: clamp(.9rem, 2vw, 1.3rem) auto 0;
+}
+
+/* =========================================================
+   2. A escolha — dois cards lado a lado
+   ========================================================= */
+.jg-escolha{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.2rem, 3vw, 2.2rem);
+  padding-bottom: clamp(3.5rem, 9vh, 6rem);
+  list-style: none;
+  margin: 0;
+}
+
+.jg-card{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--borda);
+  border-radius: 18px;
+  transition: transform .4s var(--eco-suave), border-color .4s var(--eco-suave);
+}
+.jg-card:hover{
+  transform: translateY(-4px);
+  border-color: var(--verde);
+}
+
+.jg-card__capa{
+  width: 100%;
+  height: auto;              /* sem isto o height="750" do <img> vence o aspect-ratio */
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--areia);
+  transition: transform .8s var(--eco-suave);
+}
+.jg-card__moldura{ overflow: hidden; }
+.jg-card:hover .jg-card__capa{ transform: scale(1.04); }
+
+.jg-card__corpo{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: clamp(1.2rem, 2.4vw, 1.8rem);
+}
+.jg-card__titulo{
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -.01em;
+  margin: .4rem 0 0;
+}
+.jg-card__texto{
+  font-size: .95rem;
+  line-height: 1.5;
+  color: var(--cinza);
+  margin: .6rem 0 0;
+}
+/* o botão fica no pé do card, alinhado entre os dois cards */
+.jg-card__botao{ margin-top: auto; padding-top: 1.2rem; }
+
+/* o link mora no título e o ::after estica o clique pelo card inteiro */
+.jg-card__link{ color: inherit; }
+.jg-card__link::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.jg-card__link:focus-visible{
+  outline: 2px solid var(--verde);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* =========================================================
+   3. A tela de cada jogo
+   ========================================================= */
+.jg-tela{
+  padding-bottom: clamp(3.5rem, 9vh, 6rem);
+}
+
+/* onde o jogo vai entrar quando existir */
+.jg-palco{
+  display: grid;
+  /* place-content: as duas linhas ficam juntas no meio. Com
+     place-items elas se espalhariam pela altura toda do palco */
+  place-content: center;
+  justify-items: center;
+  gap: 1.1rem;
+  max-width: 62rem;
+  min-height: clamp(18rem, 42vh, 26rem);
+  margin-inline: auto;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  text-align: center;
+  background: var(--menta);
+  border-radius: 20px;
+}
+.jg-palco__aviso{
+  font-size: .92rem;
+  color: var(--cinza);
+  margin: 0;
+}
+
+/* o botão principal desta tela é maior que o padrão: é a única
+   coisa que se faz aqui */
+.jg-jogar{
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  padding: 1rem 2.8rem;
+}
+
+.jg-voltar{
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  margin-top: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--verde);
+}
+.jg-voltar svg{ width: 16px; height: 16px; }
+.jg-voltar:hover{ text-decoration: underline; text-underline-offset: 3px; }
+
+.jg-centro{ text-align: center; }
+
+/* =========================================================
+   4. Telas menores
+   ========================================================= */
+@media (max-width: 760px){
+  .jg-escolha{ grid-template-columns: minmax(0, 1fr); }
+}
+
+/* =========================================================
+   5. Movimento
+   ========================================================= */
+@media (prefers-reduced-motion: reduce){
+  .jg-card,
+  .jg-card__capa{ transition-duration: .01ms; }
+  .jg-card:hover{ transform: none; }
+  .jg-card:hover .jg-card__capa{ transform: none; }
+}

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcoClima — Criar conta</title>
+<meta name="description" content="Crie sua conta no EcoClima e acompanhe as novidades sobre meio ambiente e mudanças climáticas.">
+<link rel="icon" href="imagens/Logo-preto.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wdth,wght@62..125,100..900&family=DM+Sans:opsz,wght@9..40,300..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="eco-corpo">
+
+<main class="auth auth--logo-pagina">
+
+  <div class="auth__forma">
+    <a class="auth__logo" href="home.html" aria-label="EcoClima — ir para a Home">
+      <img src="imagens/Logo-preto.png" alt="EcoClima">
+    </a>
+
+    <div class="auth__conteudo">
+      <h1 class="auth__titulo">Comece sua história aqui com seu cadastro!</h1>
+      <p class="auth__texto">
+        Cadastre-se para ficar por dentro de todas as novidades e histórias que temos a te
+        oferecer! Se já tem conta, <a href="login.html">faça login</a>.
+      </p>
+
+      <form class="auth__form" id="formCadastro" novalidate>
+
+        <div class="eco-campo" data-campo="nome">
+          <label class="eco-campo__rotulo" for="nome">Nome completo</label>
+          <input class="eco-campo__entrada" id="nome" name="nome" type="text"
+                 autocomplete="name" aria-describedby="erro-nome">
+          <p class="eco-campo__erro" id="erro-nome" aria-live="polite"></p>
+        </div>
+
+        <div class="eco-campo" data-campo="email">
+          <label class="eco-campo__rotulo" for="email">E-mail</label>
+          <input class="eco-campo__entrada" id="email" name="email" type="email"
+                 autocomplete="email" aria-describedby="erro-email">
+          <p class="eco-campo__erro" id="erro-email" aria-live="polite"></p>
+        </div>
+
+        <div class="eco-campo" data-campo="senha">
+          <label class="eco-campo__rotulo" for="senha">Senha</label>
+          <div class="auth__entrada-caixa">
+            <input class="eco-campo__entrada" id="senha" name="senha" type="password"
+                   autocomplete="new-password" aria-describedby="erro-senha forca-texto">
+            <button class="auth__olho" type="button" data-olho="senha"
+                    aria-label="Mostrar senha" aria-pressed="false">
+              <svg class="eco-icone" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6z"></path>
+                <circle cx="12" cy="12" r="2.6"></circle>
+                <line class="auth__olho-corte" x1="4" y1="20" x2="20" y2="4"></line>
+              </svg>
+            </button>
+          </div>
+
+          <div class="auth__forca" id="forca" hidden>
+            <div class="auth__forca-trilho"><span class="auth__forca-barra"></span></div>
+            <p class="auth__forca-texto" id="forca-texto" aria-live="polite"></p>
+          </div>
+
+          <p class="eco-campo__erro" id="erro-senha" aria-live="polite"></p>
+        </div>
+
+        <div class="eco-campo" data-campo="confirmar">
+          <label class="eco-campo__rotulo" for="confirmar">Confirmar senha</label>
+          <div class="auth__entrada-caixa">
+            <input class="eco-campo__entrada" id="confirmar" name="confirmar" type="password"
+                   autocomplete="new-password" aria-describedby="erro-confirmar">
+            <button class="auth__olho" type="button" data-olho="confirmar"
+                    aria-label="Mostrar senha" aria-pressed="false">
+              <svg class="eco-icone" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6z"></path>
+                <circle cx="12" cy="12" r="2.6"></circle>
+                <line class="auth__olho-corte" x1="4" y1="20" x2="20" y2="4"></line>
+              </svg>
+            </button>
+          </div>
+          <p class="eco-campo__erro" id="erro-confirmar" aria-live="polite"></p>
+        </div>
+
+        <div class="auth__termos" data-campo="termos">
+          <label class="auth__termos-rotulo" for="termos">
+            <input class="auth__caixa" id="termos" name="termos" type="checkbox"
+                   aria-describedby="erro-termos">
+            <!-- Termos de Uso e Política de Privacidade ainda não são links:
+                 essas páginas nascem na Etapa 10 -->
+            <span>Li e concordo com os <strong>Termos de Uso</strong> e a
+              <strong>Política de Privacidade</strong>.</span>
+          </label>
+          <p class="eco-campo__erro" id="erro-termos" aria-live="polite"></p>
+        </div>
+
+        <button class="eco-btn eco-btn--principal auth__enviar" id="enviarCadastro" type="submit">
+          <span data-rotulo>Criar conta</span>
+        </button>
+
+      </form>
+    </div>
+  </div>
+
+  <div class="auth__midia auth__midia--arvore"></div>
+</main>
+
+<!-- ============ CARTÃO DE SUCESSO ============ -->
+<div class="auth__sucesso" id="sucesso" hidden>
+  <div class="auth__sucesso-cartao" role="dialog" aria-modal="true" aria-labelledby="sucessoTitulo">
+    <svg class="auth__check" viewBox="0 0 60 60" aria-hidden="true">
+      <circle class="auth__check-roda" cx="30" cy="30" r="26"></circle>
+      <path class="auth__check-tique" d="M18 31.5 L26.5 40 L42 22"></path>
+    </svg>
+    <h2 class="auth__sucesso-titulo" id="sucessoTitulo">Conta criada!</h2>
+    <p class="auth__sucesso-texto">Levando você para a Home em <span id="contagem">3</span>s</p>
+    <button class="eco-btn eco-btn--principal" id="irAgora" type="button">Ir agora</button>
+  </div>
+</div>
+
+<script src="js/layout.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

@@ -10,44 +10,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wdth,wght@62..125,100..900&family=DM+Sans:opsz,wght@9..40,300..800&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add("js");</script>
-<!-- style.css traz a identidade (variáveis, navbar, footer); dev.css só o que é desta página -->
+<!-- base.css traz as variáveis e os componentes eco-; style.css traz a identidade
+     (navbar, footer); dev.css só o que é desta página -->
+<link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="dev.css">
 </head>
 <body>
 
 <!-- ============ NAVBAR ============ -->
-<header class="nav" id="nav">
-  <div class="nav__inner">
-    <nav class="nav__group nav__group--left" aria-label="Navegação principal">
-      <a class="nav__link" href="entraves.html">Entraves</a>
-      <a class="nav__link" href="#" data-soon>Jogo</a>
-      <a class="nav__link" href="#" data-soon>Notícias</a>
-    </nav>
-
-    <a class="nav__logo" href="index.html" id="logoHome" aria-label="EcoClima — voltar para a home">
-      <img class="nav__logo-img nav__logo-img--light" src="imagens/Logo-branco.png" alt="EcoClima">
-      <img class="nav__logo-img nav__logo-img--dark" src="imagens/Logo-preto.png" alt="">
-    </a>
-
-    <nav class="nav__group nav__group--right" aria-label="Navegação secundária">
-      <a class="nav__link" href="#" data-soon>Timeline</a>
-      <a class="nav__link is-active" href="dev.html" aria-current="page">DEVs</a>
-    </nav>
-
-    <button class="nav__burger" id="navBurger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMobile">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-
-  <div class="nav__mobile" id="navMobile" hidden>
-    <a class="nav__mlink" href="entraves.html">Entraves</a>
-    <a class="nav__mlink" href="#" data-soon>Jogo</a>
-    <a class="nav__mlink" href="#" data-soon>Notícias</a>
-    <a class="nav__mlink" href="#" data-soon>Timeline</a>
-    <a class="nav__mlink is-active" href="dev.html" aria-current="page">DEVs</a>
-  </div>
-</header>
+<!-- montada por js/layout.js -->
+<div data-eco-cabecalho></div>
 
 <!-- ============ DEVS ============ -->
 <main class="devs" id="top" data-nav="dark">
@@ -145,17 +118,11 @@
 </main>
 
 <!-- ============ FOOTER ============ -->
-<footer class="footer" data-nav="dark">
-  <div class="wrap">
-    <h2 class="footer__word">ECOCLIMA</h2>
-    <hr class="footer__rule">
-    <div class="footer__bottom">
-      <p class="footer__text">A EcoClima oferece soluções em climatização e eficiência energética para proporcionar mais conforto, economia e sustentabilidade. Nosso compromisso é unir tecnologia e responsabilidade ambiental para criar ambientes mais eficientes e agradáveis. © 2026 EcoClima. Todos os direitos reservados.</p>
-      <button class="badge" type="button" data-soon>PT-BR</button>
-    </div>
-  </div>
-</footer>
+<!-- montado por js/layout.js -->
+<div data-eco-rodape></div>
 
+<!-- layout.js vem antes: o script.js precisa achar o cabeçalho já no lugar -->
+<script src="js/layout.js"></script>
 <script src="script.js"></script>
 <script src="dev.js"></script>
 </body>

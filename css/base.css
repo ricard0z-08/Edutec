@@ -1,0 +1,383 @@
+/* =========================================================
+   ECOCLIMA — base.css
+   Variáveis e componentes compartilhados por todas as páginas.
+
+   REGRA DESTE ARQUIVO: nada de seletor de elemento solto
+   (body, h1, p, a, *). Tudo mora em classes com prefixo eco-,
+   porque a Home, a DEVs e a Entraves já têm o estilo delas no
+   style.css e nada aqui pode alterar essas páginas.
+
+   Exceção combinada: o cabeçalho e o rodapé continuam usando as
+   classes nav__* e footer__* que já existem no style.css. Só o
+   que é novo no rodapé (a linha de links) ganhou nome eco-.
+   ========================================================= */
+
+/* =========================================================
+   1. Variáveis
+   ========================================================= */
+:root{
+  /* ---- Cores do guia visual ---- */
+  --menta:        #D3EBC8;   /* fundo da boas-vindas e painéis de destaque */
+  --areia:        #F1ECE2;   /* fundo alternado de seções */
+  --claro:        #F5F0EB;   /* fundo padrão das páginas (valor tirado das telas do Figma) */
+  --verde:        #2F6B1F;   /* botões principais, links, linha da timeline */
+  --verde-escuro: #0F1A10;   /* títulos e texto principal */
+  --verde-floresta: #002406; /* letras gigantes da tela de boas-vindas */
+  --cinza:        #4D574B;   /* texto secundário */
+  --terracota:    #A84A2C;   /* única cor de alerta: erros e selos das COPs */
+  --borda:        #D9DDD3;   /* contornos finos */
+
+  /* ---- Fontes (as mesmas que a Home já carrega do Google Fonts) ---- */
+  --fonte-titulo: 'Archivo', 'Arial Narrow', Impact, sans-serif;   /* títulos grandes */
+  --fonte-logo:   'Anton', 'Arial Narrow', Impact, sans-serif;     /* só o logotipo ECOCLIMA */
+  --fonte-texto:  'DM Sans', 'Segoe UI', system-ui, sans-serif;    /* todo o resto */
+
+  /* ---- Medidas ---- */
+  --eco-raio:     12px;    /* cantos de cards e campos */
+  --eco-pilula:   999px;   /* botões */
+  --eco-linha:    70ch;    /* ~75 caracteres por linha de texto corrido */
+  --eco-suave:    cubic-bezier(.22, .68, .32, 1);
+}
+
+/* =========================================================
+   2. Corpo das páginas novas
+   Só vale para quem escrever <body class="eco-corpo">.
+   As páginas antigas não usam esta classe.
+   ========================================================= */
+.eco-corpo{
+  margin: 0;
+  font-family: var(--fonte-texto);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--verde-escuro);
+  background: var(--claro);
+  -webkit-font-smoothing: antialiased;
+}
+.eco-corpo,
+.eco-corpo *,
+.eco-corpo *::before,
+.eco-corpo *::after{ box-sizing: border-box; }
+
+/* foco sempre visível para quem navega pelo teclado */
+.eco-corpo :focus-visible{
+  outline: 2px solid var(--verde);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* =========================================================
+   3. Texto
+   ========================================================= */
+.eco-titulo{
+  font-family: var(--fonte-titulo);
+  font-variation-settings: 'wdth' 82, 'wght' 800;
+  font-size: clamp(2.2rem, 7vw, 5rem);
+  line-height: .92;
+  letter-spacing: -.02em;
+  color: var(--verde-escuro);
+  margin: 0;
+}
+.eco-subtitulo{
+  font-family: var(--fonte-texto);
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -.02em;
+  color: var(--verde-escuro);
+  margin: 0;
+}
+.eco-texto{
+  max-width: var(--eco-linha);
+  color: var(--cinza);
+  margin: 0;
+}
+.eco-link{
+  color: var(--verde);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* visível só para leitores de tela */
+.eco-so-leitor{
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* =========================================================
+   4. Botões
+   O texto do botão diz o que acontece: "Criar conta", "Entrar".
+   ========================================================= */
+.eco-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: .8rem 1.6rem;
+  border: 1.5px solid transparent;
+  border-radius: var(--eco-pilula);
+  font-family: var(--fonte-texto);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .3s var(--eco-suave), color .3s var(--eco-suave),
+              border-color .3s var(--eco-suave), transform .3s var(--eco-suave);
+}
+.eco-btn:active{ transform: scale(.98); }
+
+.eco-btn--principal{
+  background: var(--verde);
+  color: #fff;
+}
+.eco-btn--principal:hover{ background: var(--verde-escuro); }
+
+.eco-btn--secundario{
+  background: transparent;
+  color: var(--verde-escuro);
+  border-color: var(--verde-escuro);
+}
+.eco-btn--secundario:hover{
+  background: var(--verde-escuro);
+  color: var(--claro);
+}
+
+.eco-btn[disabled],
+.eco-btn[aria-disabled="true"]{
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   5. Cards — contorno fino, nunca sombra preta dura
+   ========================================================= */
+.eco-card{
+  background: #fff;
+  border: 1px solid var(--borda);
+  border-radius: var(--eco-raio);
+  padding: clamp(1.1rem, 2.4vw, 1.8rem);
+}
+.eco-card--areia{ background: var(--areia); }
+.eco-card--menta{ background: var(--menta); border-color: transparent; }
+
+.eco-card__titulo{
+  font-family: var(--fonte-texto);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--verde-escuro);
+  margin: 0 0 .5rem;
+}
+.eco-card__texto{
+  font-size: .95rem;
+  color: var(--cinza);
+  margin: 0;
+}
+
+/* ícones: SVG de traço inline, nunca emoji */
+.eco-icone{
+  width: 24px; height: 24px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* =========================================================
+   6. Formulários — rótulo acima do campo, erro embaixo
+   ========================================================= */
+.eco-form{
+  display: grid;
+  gap: 1.15rem;
+  width: 100%;
+}
+
+/* sem gap: a mensagem de erro precisa continuar no HTML mesmo vazia
+   (é ela que avisa o leitor de tela), e um gap deixaria um buraco */
+.eco-campo{ display: grid; }
+
+/* rótulo pequeno e discreto, sempre acima do campo */
+.eco-campo__rotulo{
+  font-size: .85rem;
+  font-weight: 400;
+  color: var(--cinza);
+  margin-bottom: .3rem;
+}
+
+/* campo de linha: só o fiozinho embaixo, como nas telas do Figma */
+.eco-campo__entrada{
+  width: 100%;
+  padding: .45rem 0;
+  font-family: var(--fonte-texto);
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--verde-escuro);
+  background: transparent;
+  border: 0;
+  border-bottom: 1.5px solid var(--borda);
+  border-radius: 0;
+  transition: border-color .25s var(--eco-suave);
+}
+.eco-campo__entrada::placeholder{ color: var(--cinza); font-weight: 400; opacity: .8; }
+.eco-campo__entrada:focus{
+  outline: none;                       /* a própria linha mostra o foco */
+  border-bottom-width: 2px;
+  border-bottom-color: var(--verde);
+}
+
+/* Vazia, a mensagem não ocupa altura nenhuma — mas continua no HTML,
+   porque é ela que tem aria-live e avisa quem usa leitor de tela. */
+.eco-campo__erro{
+  font-size: .82rem;
+  line-height: 1.35;
+  color: var(--terracota);
+  margin: 0;
+}
+.eco-campo__erro:not(:empty){ margin-top: .35rem; }
+
+.eco-campo--erro .eco-campo__entrada{ border-bottom-color: var(--terracota); }
+
+.eco-campo__ajuda{
+  font-size: .85rem;
+  color: var(--cinza);
+}
+
+/* =========================================================
+   7. Aviso (toast)
+   Canto inferior direito no computador, topo no celular.
+   Quem mostra e esconde é o JS, trocando a classe --visivel.
+   O HTML precisa ter aria-live="polite".
+   ========================================================= */
+.eco-aviso{
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 999;
+  max-width: min(22rem, calc(100vw - 2.5rem));
+  padding: .85rem 1.15rem;
+  background: var(--verde-escuro);
+  color: var(--claro);
+  border-radius: var(--eco-raio);
+  font-size: .95rem;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity .3s var(--eco-suave), transform .3s var(--eco-suave);
+}
+.eco-aviso--visivel{
+  opacity: 1;
+  transform: none;
+}
+.eco-aviso--erro{ background: var(--terracota); }
+
+@media (max-width: 767px){
+  .eco-aviso{
+    top: 1rem;
+    bottom: auto;
+    left: 1rem;
+    right: 1rem;
+    max-width: none;
+    transform: translateY(-12px);
+  }
+  .eco-aviso--visivel{ transform: none; }
+}
+
+/* =========================================================
+   8. Peças do cabeçalho e do rodapé compartilhados
+   (o resto do visual deles vem do style.css)
+   ========================================================= */
+
+/* espaço reservado do login no cabeçalho — preenchido na Etapa 2 */
+.eco-conta{
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+/* o [hidden] precisa vencer o display de cima, senão o espaço vazio
+   ainda ocuparia lugar na barra (mesmo caso do .nav__mobile) */
+.eco-conta[hidden]{ display: none; }
+
+/* Tudo aqui herda a cor da barra (currentColor), então funciona igual
+   sobre foto (texto branco) e sobre fundo claro (texto escuro). */
+.eco-conta__ola{
+  font-size: .92rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.eco-conta__entrar,
+.eco-conta__sair{
+  font-family: var(--fonte-texto);
+  font-size: .92rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: .42rem .9rem;
+  border: 1px solid currentColor;
+  border-radius: var(--eco-pilula);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity .3s var(--eco-suave);
+}
+.eco-conta__entrar{ text-decoration: none; }
+/* a barra muda de cor conforme a seção, então o hover não pode fixar
+   uma cor de fundo: um leve apagar funciona sobre qualquer fundo */
+.eco-conta__entrar:hover,
+.eco-conta__sair:hover{ opacity: .7; }
+
+/* dentro do menu do celular os itens ficam empilhados, como os .nav__mlink */
+.eco-conta--mobile{
+  flex-wrap: wrap;
+  gap: .8rem;
+  padding: 1rem .2rem .2rem;
+}
+
+/* linha de links do rodapé */
+.eco-rodape-links{
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem 1.4rem;
+  margin-bottom: 1.4rem;
+}
+.eco-rodape-link{
+  font-size: .88rem;
+  color: inherit;
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: border-color .3s var(--eco-suave), opacity .3s var(--eco-suave);
+}
+.eco-rodape-link:hover{ border-bottom-color: currentColor; }
+/* página atual: o fiozinho fica sempre visível, como no cabeçalho */
+.eco-rodape-link[aria-current="page"]{
+  font-weight: 600;
+  border-bottom-color: currentColor;
+}
+.eco-rodape-link:focus-visible{
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+/* no rodapé escuro o texto é claro, então o link só perde um pouco de peso */
+.footer--dark .eco-rodape-link{ opacity: .8; }
+.footer--dark .eco-rodape-link:hover{ opacity: 1; }
+
+/* =========================================================
+   9. Movimento
+   Só onde responde a uma ação — e nunca para quem pediu
+   menos animação no sistema.
+   ========================================================= */
+@media (prefers-reduced-motion: reduce){
+  .eco-btn,
+  .eco-campo__entrada,
+  .eco-aviso,
+  .eco-rodape-link{
+    transition-duration: .01ms;
+  }
+  .eco-aviso{ transform: none; }
+}

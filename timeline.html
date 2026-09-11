@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcoClima — Timeline das COPs</title>
+<meta name="description" content="A linha do tempo das conferências do clima: da Rio-92 à COP30 em Belém, o que foi decidido em cada encontro e por quê.">
+<link rel="icon" href="imagens/Logo-preto.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wdth,wght@62..125,100..900&family=DM+Sans:opsz,wght@9..40,300..800&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js");</script>
+<!-- base.css traz as variáveis e os componentes eco-; style.css traz a identidade
+     (navbar, footer); css/timeline.css só o que é desta página -->
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/timeline.css">
+</head>
+<body class="tl-pagina">
+
+<!-- ============ NAVBAR ============ -->
+<!-- montada por js/layout.js -->
+<div data-eco-cabecalho></div>
+
+<!-- ============ TOPO ============ -->
+<header class="tl-topo" id="top" data-nav="dark">
+  <div class="wrap">
+    <p class="tl-etiqueta tl-entra">Linha do tempo</p>
+    <h1 class="tl-topo__titulo tl-entra">TIMELINE</h1>
+    <p class="tl-topo__texto tl-entra">Todas as COPs em ordem para você aprender mais!</p>
+    <p class="tl-topo__nota tl-entra">
+      De 1992, no Rio de Janeiro, a 2025, em Belém: quinze encontros que construíram,
+      passo a passo, o acordo climático que o mundo tem hoje.
+    </p>
+
+    <a class="tl-topo__rolar tl-entra" href="#trilha">
+      <span class="tl-topo__rolar-txt">começar em 1992</span>
+      <span class="tl-topo__rolar-linha" aria-hidden="true"></span>
+    </a>
+  </div>
+</header>
+
+<!-- ============ LINHA DO TEMPO ============ -->
+<main class="tl-corpo" data-nav="dark">
+  <div class="wrap">
+
+    <!-- atalho lateral com os anos; o conteúdo é montado por js/timeline.js -->
+    <nav class="tl-atalho" id="tlAtalho" aria-label="Anos da linha do tempo" hidden></nav>
+
+    <div class="tl-trilha" id="trilha">
+      <!-- fio vertical que liga os cards; a parte colorida cresce com a rolagem -->
+      <div class="tl-fio" aria-hidden="true"><span class="tl-fio__ativo" id="tlFio"></span></div>
+
+      <ol class="tl-lista">
+
+        <!-- ---------- 1992 ---------- -->
+        <li class="tl-item tl-item--esq" id="cop-1992" data-ano="1992">
+          <article class="tl-card">
+            <div class="tl-card__painel">
+              <p class="tl-card__selo">A origem</p>
+              <h2 class="tl-card__ano">1992</h2>
+              <p class="tl-card__local">Rio de Janeiro, Brasil</p>
+              <p class="tl-card__resumo">
+                Antes de existir qualquer COP, foi preciso um acordo sobre o tamanho do problema.
+                A Rio-92 reuniu delegações de mais de 170 países e cerca de cem chefes de Estado
+                para discutir, pela primeira vez em escala mundial, como crescer sem destruir a natureza.
+              </p>
+              <dl class="tl-fatos">
+                <div class="tl-fato">
+                  <dt>Ponto-chave</dt>
+                  <dd>Nasceu ali a Convenção-Quadro das Nações Unidas sobre Mudança do Clima, o tratado que criou as COPs.</dd>
+                </div>
+                <div class="tl-fato">
+                  <dt>Resultado</dt>
+                  <dd>Além da convenção do clima, saíram do encontro a Agenda 21 e a Convenção da Biodiversidade. A sociedade civil participou em peso, algo inédito até então.</dd>
+                </div>
+              </dl>
+            </div>
+            <figure class="tl-card__arte">
+              <img class="tl-card__img" src="imagens/Imagens-tela-timeline/cop-1992-rio.svg"
+                   alt="Ilustração do Rio de Janeiro ao amanhecer: morros arredondados, baía calma e coqueiros"
+                   width="1000" height="750" loading="lazy">
+            </figure>
+          </article>
+        </li>
+
+        <!-- ---------- 1995 ---------- -->
+        <li class="tl-item tl-item--dir" id="cop-1995" data-ano="1995">
+          <article class="tl-card">
+            <div class="tl-card__painel">
+              <p class="tl-card__selo">COP 1</p>
+              <h2 class="tl-card__ano">1995</h2>
+              <p class="tl-card__local">Berlim, Alemanha</p>
+              <p class="tl-card__resumo">
+                A primeira Conferência das Partes serviu para conferir se as promessas da Rio-92
+                estavam de pé. Não estavam: as metas voluntárias assumidas pelos países eram
+                insuficientes para frear o aquecimento.
+              </p>
+              <dl class="tl-fatos">
+                <div class="tl-fato">
+                  <dt>Ponto-chave</dt>
+                  <dd>A conferência foi presidida por Angela Merkel, então ministra do Meio Ambiente da Alemanha.</dd>
+                </div>
+                <div class="tl-fato">
+                  <dt>Resultado</dt>
+                  <dd>O Mandato de Berlim abriu dois anos de negociação para criar metas obrigatórias de redução de emissões para os países industrializados.</dd>
+                </div>
+              </dl>
+            </div>
+            <figure class="tl-card__arte">
+              <img class="tl-card__img" src="imagens/Imagens-tela-timeline/cop-1995-berlim.svg"
+                   alt="Ilustração de Berlim no inverno: o Portão de Brandemburgo, árvores sem folhas e céu frio"
+                   width="1000" height="750" loading="lazy">
+            </figure>
+          </article>
+        </li>
+
+        <!-- ---------- 1997 ---------- -->
+        <li class="tl-item tl-item--esq" id="cop-1997" data-ano="1997">
+          <article class="tl-card">
+            <div class="tl-card__painel">
+              <p class="tl-card__selo">COP 3</p>
+              <h2 class="tl-card__ano">1997</h2>
+              <p class="tl-card__local">Quioto, Japão</p>
+              <p class="tl-card__resumo">
+                Dois anos depois do Mandato de Berlim veio o primeiro acordo climático da história
+                com metas obrigatórias. Foi também a primeira vez que o mundo colocou preço e prazo
+                na redução de emissões.
+              </p>
+              <dl class="tl-fatos">
+                <div class="tl-fato">
+                  <dt>Ponto-chave</dt>
+                  <dd>Consolidou a ideia de “responsabilidades comuns, porém diferenciadas”: quem mais poluiu para se industrializar deveria cortar mais.</dd>
+                </div>
+                <div class="tl-fato">
+                  <dt>Resultado</dt>
+                  <dd>O Protocolo de Quioto exigiu dos países desenvolvidos uma redução média de 5,2% das emissões em relação a 1990, entre 2008 e 2012. Criou também o Mecanismo de Desenvolvimento Limpo e o comércio de créditos de carbono.</dd>
+                </div>
+              </dl>
+            </div>
+            <figure class="tl-card__arte">
+              <img class="tl-card__img" src="imagens/Imagens-tela-timeline/cop-1997-quioto.svg"
+                   alt="Ilustração de Quioto ao entardecer: pagode de cinco andares, torii e colinas"
+                   width="1000" height="750" loading="lazy">
+            </figure>
+          </article>
+        </li>
+
+        <!-- ---------- 2000 ---------- -->
+        <li class="tl-item tl-item--dir" id="cop-2000" data-ano="2000">
+          <article class="tl-card">
+            <div class="tl-card__painel">
+              <p class="tl-card__selo">COP 6</p>
+              <h2 class="tl-card__ano">2000</h2>
+              <p class="tl-card__local">Haia, Países Baixos</p>
+              <p class="tl-card__resumo">
+                A conferência que travou. União Europeia e Estados Unidos discordaram sobre quanto
+                as florestas e o solo poderiam contar como “sumidouros de carbono” para abater
+                as metas já assumidas em Quioto.
+              </p>
+              <dl class="tl-fatos">
+                <div class="tl-fato">
+                  <dt>Ponto-chave</dt>
+                  <dd>Os Estados Unidos queriam compensar emissões industriais com o carbono absorvido pela vegetação; a União Europeia via nisso uma forma de fugir dos cortes reais.</dd>
+                </div>
+                <div class="tl-fato">
+                  <dt>Resultado</dt>
+                  <dd>As negociações foram suspensas sem acordo e só voltaram meses depois, numa sessão extra realizada em Bonn, em 2001.</dd>
+                </div>
+              </dl>
+            </div>
+            <figure class="tl-card__arte">
+              <img class="tl-card__img" src="imagens/Imagens-tela-timeline/cop-2000-haia.svg"
+                   alt="Ilustração da Holanda: moinho de vento, casas de canal com empenas escalonadas e água parada"
+                   width="1000" height="750" loading="lazy">
+            </figure>
+          </article>
+        </li>
+
+        <!-- ---------- 2005 ---------- -->
+        <li class="tl-item tl-item--esq" id="cop-2005" data-ano="2005">
+          <article class="tl-card">
+            <div class="tl-card__painel">
+              <p class="tl-card__selo">COP 11</p>
+              <h2 class="tl-card__ano">2005</h2>
+              <p class="tl-card__local">Montreal, Canadá</p>
+              <p class="tl-card__resumo">
+                O Protocolo de Quioto entrou em vigor em fevereiro de 2005, depois que a Rússia o
+                ratificou. Montreal foi o primeiro encontro com o acordo valendo de verdade — e com
+                a obrigação de pensar no que viria depois dele.
+              </p>
+              <dl class="tl-fatos">
+                <div class="tl-fato">
+                  <dt>Ponto-chave</dt>
+                  <dd>Aconteceu ali a primeira reunião das Partes do Protocolo de Quioto, realizada junto com a COP.</dd>
+                </div>
+                <div class="tl-fato">
+                  <dt>Resultado</dt>
+                  <dd>O Plano de Ação de Montreal começou a desenhar o regime pós-2012 e abriu a discussão que daria origem ao REDD, a redução de emissões por desmatamento.</dd>
+                </div>
+              </dl>
+            </div>
+            <figure class="tl-card__arte">
+              <img class="tl-card__img" src="imagens/Imagens-tela-timeline/cop-2005-montreal.svg"
+                   alt="Ilustração de Montreal no inverno: cúpula geodésica, pinheiros e campo de neve"
+                   width="1000" height="750" loading="lazy">
+            </figure>
+          </article>
+        </li>
+
+        <!-- ---------- 2007 ---------- -->
+        <li class="tl-item tl-item--dir" id="cop-2007" data-ano="2007">
+          <article class="tl-card">
+            <div class="tl-card__painel">
+              <p class="tl-card__selo">COP 13</p>
+              <h2 class="tl-card__ano">2007</h2>
+              <p class="tl-card__local">Bali, Indonésia</p>
+              <p class="tl-card__resumo">
+                O quarto relatório do IPCC, publicado naquele ano, afirmou com clareza que o
+                aquecimento global é causado pela ação humana. A conferência existiu para responder
+                a esse diagnóstico.
+              </p>
+              <dl class="tl-fatos">
+                <div class="tl-fato">
+                  <dt>Ponto-chave</dt>
+                  <dd>Pela primeira vez, os países em desenvolvimento também foram chamados a apresentar medidas de redução de emissões.</dd>
+                </div>
+                <div class="tl-fato">
+                  <dt>Resultado</dt>
+                  <dd>O Mapa do Caminho de Bali organizou a negociação de um novo acordo em quatro pilares: redução de emissões, adaptação, tecnologia e financiamento.</dd>
+                </div>
+              </dl>
+            </div>
+            <figure class="tl-card__arte">
+              <img class="tl-card__img" src="imagens/Imagens-tela-timeline/cop-2007-bali.svg"
+                   alt="Ilustração de Bali: vulcão ao fundo, terraços de arroz e coqueiros junto ao mar"
+                   width="1000" height="750" loading="lazy">
+            </figure>
+          </article>
+        </li>
+
+        <!-- ---------- 2009 ---------- -->
+        <li class="tl-item tl-item--esq" id="cop-2009" data-ano="2009">
+          <article class="tl-card">
+            <div class="tl-card__painel">
+              <p class="tl-card__selo">COP 15</p>
+              <h2 class="tl-card__ano">2009</h2>
+              <p class="tl-card__local">Copenhague, Dinamarca</p>
+              <p class="tl-card__resumo">
+                A COP mais esperada da década terminou em frustração. A expectativa era sair de lá
+                com o sucessor de Quioto; o que saiu foi um texto político, negociado às pressas por
+                um grupo pequeno de países.
+              </p>
+              <dl class="tl-fatos">
+                <div class="tl-fato">
+                  <dt>Ponto-chave</dt>
+                  <dd>O Acordo de Copenhague não chegou a ser formalmente adotado: a conferência apenas “tomou nota” dele.</dd>
+                </div>
+                <div class="tl-fato">
+                  <dt>Resultado</dt>
+                  <dd>Ainda assim ficaram registrados dois compromissos que voltariam mais tarde: limitar o aquecimento a 2 °C e mobilizar cem bilhões de dólares por ano, até 2020, para os países em desenvolvimento.</dd>
+                </div>
+              </dl>
+            </div>
+            <figure class="tl-card__arte">
+              <img class="tl-card__img" src="imagens/Imagens-tela-timeline/cop-2009-copenhague.svg"
+                   alt="Ilustração de Copenhague: turbinas eólicas no mar e a fileira de casas coloridas do porto"
+                   width="1000" height="750" loading="lazy">
+            </figure>
+          </article>
+        </li>
+
+        <!-- ---------- 2011 ---------- -->
+        <li class="tl-item tl-item--dir" id="cop-2011" data-ano="2011">
+          <article class="tl-card">
+            <div class="tl-card__painel">
+              <p class="tl-card__selo">COP 17</p>
+              <h2 class="tl-card__ano">2011</h2>
+              <p class="tl-card__local">Durban, África do Sul</p>
+              <p class="tl-card__resumo">
+                O primeiro período de compromissos de Quioto terminava em 2012 e não havia nada
+                pronto para colocar no lugar. Durban existiu para evitar esse vazio.
+              </p>
+              <dl class="tl-fatos">
+                <div class="tl-fato">
+                  <dt>Ponto-chave</dt>
+                  <dd>Quebrou-se a separação rígida entre países desenvolvidos e em desenvolvimento: o próximo acordo valeria para todos.</dd>
+                </div>
+                <div class="tl-fato">
+                  <dt>Resultado</dt>
+                  <dd>A Plataforma de Durban definiu o prazo — um novo acordo global deveria ser concluído até 2015 e entrar em vigor a partir de 2020. Era o caminho que levaria a Paris.</dd>
+                </div>
+              </dl>
+            </div>
+            <figure class="tl-card__arte">
+              <img class="tl-card__img" src="imagens/Imagens-tela-timeline/cop-2011-durban.svg"
+                   alt="Ilustração da costa da África do Sul: sol grande, acácias de copa achatada e savana"
+                   width="1000" height="750" loading="lazy">
+            </figure>
+          </article>
+        </li>
+
+        <!-- ---------- 2013 ---------- -->
+        <li class="tl-item tl-item--esq" id="cop-2013" data-ano="2013">
+          <article class="tl-card">
+            <div class="tl-card__painel">
+              <p class="tl-card__selo">COP 19</p>
+              <h2 class="tl-card__ano">2013</h2>
+              <p class="tl-card__local">Varsóvia, Polônia</p>
+              <p class="tl-card__resumo">
+                Enquanto os países negociavam, o tufão Haiyan devastava as Filipinas. O delegado
+                filipino entrou em greve de fome durante a conferência e o tema das perdas causadas
+                pelo clima ficou impossível de adiar.
+              </p>
+              <dl class="tl-fatos">
+                <div class="tl-fato">
+                  <dt>Ponto-chave</dt>
+                  <dd>A discussão se voltou para quem paga a conta dos estragos — e para as nações que menos emitiram, mas são as mais atingidas.</dd>
+                </div>
+                <div class="tl-fato">
+                  <dt>Resultado</dt>
+                  <dd>Foi criado o Mecanismo Internacional de Varsóvia para Perdas e Danos, ao lado do Quadro de Varsóvia para REDD+, com regras de pagamento por florestas em pé.</dd>
+                </div>
+              </dl>
+            </div>
+            <figure class="tl-card__arte">
+              <img class="tl-card__img" src="imagens/Imagens-tela-timeline/cop-2013-varsovia.svg"
+                   alt="Ilustração de Varsóvia sob tempestade: silhueta da cidade, chuva forte e água empoçada"
+                   width="1000" height="750" loading="lazy">
+            </figure>
+          </article>
+        </li>
+
+        <!-- ---------- 2015 ---------- -->
+        <li class="tl-item tl-item--dir tl-item--marco" id="cop-2015" data-ano="2015">
+          <article class="tl-card">
+            <div class="tl-card__painel">
+              <p class="tl-card__selo">COP 21</p>
+              <h2 class="tl-card__ano">2015</h2>
+              <p class="tl-card__local">Paris, França</p>
+              <p class="tl-card__resumo">
+                O ponto de chegada do caminho aberto em Durban e o acordo climático mais importante
+                já assinado. Cento e noventa e cinco países aprovaram um modelo novo, feito de
+                compromissos próprios revisados de tempos em tempos.
+              </p>
+              <dl class="tl-fatos">
+                <div class="tl-fato">
+                  <dt>Ponto-chave</dt>
+                  <dd>Cada país passou a apresentar a sua própria meta, a NDC, em vez de receber um número decidido de cima para baixo.</dd>
+                </div>
+                <div class="tl-fato">
+                  <dt>Resultado</dt>
+                  <dd>O Acordo de Paris fixou o objetivo de manter o aquecimento bem abaixo de 2 °C, com esforços para limitá-lo a 1,5 °C, e criou o ciclo de revisão das metas a cada cinco anos.</dd>
+                </div>
+              </dl>
+            </div>
+            <figure class="tl-card__arte">
+              <img class="tl-card__img" src="imagens/Imagens-tela-timeline/cop-2015-paris.svg"
+                   alt="Ilustração de Paris ao anoitecer: a Torre Eiffel, o rio Sena e árvores do parque"
+                   width="1000" height="750" loading="lazy">
+            </figure>
+          </article>
+        </li>
+
+        <!-- ---------- 2021 ---------- -->
+        <li class="tl-item tl-item--esq" id="cop-2021" data-ano="2021">
+          <article class="tl-card">
+            <div class="tl-card__painel">
+              <p class="tl-card__selo">COP 26</p>
+              <h2 class="tl-card__ano">2021</h2>
+              <p class="tl-card__local">Glasgow, Reino Unido</p>
+              <p class="tl-card__resumo">
+                Primeira COP presencial depois do início da pandemia, realizada poucos meses depois
+                de o IPCC apontar que a situação já era, nas palavras da ONU, um “código vermelho
+                para a humanidade”.
+              </p>
+              <dl class="tl-fatos">
+                <div class="tl-fato">
+                  <dt>Ponto-chave</dt>
+                  <dd>Pela primeira vez, o texto final de uma COP citou explicitamente o carvão e os subsídios aos combustíveis fósseis.</dd>
+                </div>
+                <div class="tl-fato">
+                  <dt>Resultado</dt>
+                  <dd>O Pacto Climático de Glasgow pediu a redução gradual do uso do carvão sem captura de emissões e fechou as regras do Artigo 6, que trata do mercado global de carbono.</dd>
+                </div>
+              </dl>
+            </div>
+            <figure class="tl-card__arte">
+              <img class="tl-card__img" src="imagens/Imagens-tela-timeline/cop-2021-glasgow.svg"
+                   alt="Ilustração das terras altas da Escócia: colinas verdes, ponte sobre o rio e garoa"
+                   width="1000" height="750" loading="lazy">
+            </figure>
+          </article>
+        </li>
+
+        <!-- ---------- 2022 ---------- -->
+        <li class="tl-item tl-item--dir" id="cop-2022" data-ano="2022">
+          <article class="tl-card">
+            <div class="tl-card__painel">
+              <p class="tl-card__selo">COP 27</p>
+              <h2 class="tl-card__ano">2022</h2>
+              <p class="tl-card__local">Sharm El-Sheikh, Egito</p>
+              <p class="tl-card__resumo">
+                Chamada de “COP africana”, foi a conferência da implementação e do dinheiro: menos
+                metas novas, mais cobrança sobre o que já havia sido prometido nos anos anteriores.
+              </p>
+              <dl class="tl-fatos">
+                <div class="tl-fato">
+                  <dt>Ponto-chave</dt>
+                  <dd>Os países mais vulneráveis cobraram compensação histórica pelos prejuízos que já sofrem com secas, enchentes e tempestades.</dd>
+                </div>
+                <div class="tl-fato">
+                  <dt>Resultado</dt>
+                  <dd>Foi aprovada a criação de um fundo específico de Perdas e Danos para auxiliar as nações mais atingidas — uma reivindicação de mais de trinta anos.</dd>
+                </div>
+              </dl>
+            </div>
+            <figure class="tl-card__arte">
+              <img class="tl-card__img" src="imagens/Imagens-tela-timeline/cop-2022-sharm.svg"
+                   alt="Ilustração do Egito: dunas do deserto encontrando o Mar Vermelho sob sol forte"
+                   width="1000" height="750" loading="lazy">
+            </figure>
+          </article>
+        </li>
+
+        <!-- ---------- 2023 ---------- -->
+        <li class="tl-item tl-item--esq" id="cop-2023" data-ano="2023">
+          <article class="tl-card">
+            <div class="tl-card__painel">
+              <p class="tl-card__selo">COP 28</p>
+              <h2 class="tl-card__ano">2023</h2>
+              <p class="tl-card__local">Dubai, Emirados Árabes Unidos</p>
+              <p class="tl-card__resumo">
+                A COP do primeiro Balanço Global, o exame que mede se o mundo está perto ou longe
+                das metas de Paris. O diagnóstico foi duro: no ritmo atual, não chegamos lá.
+              </p>
+              <dl class="tl-fatos">
+                <div class="tl-fato">
+                  <dt>Ponto-chave</dt>
+                  <dd>A presidência nas mãos de Sultan Al Jaber, executivo da estatal de petróleo dos Emirados, acendeu o debate sobre o papel do setor petrolífero na transição.</dd>
+                </div>
+                <div class="tl-fato">
+                  <dt>Resultado</dt>
+                  <dd>O texto final pediu, pela primeira vez, a transição para longe dos combustíveis fósseis nos sistemas de energia, e fixou a meta de triplicar a capacidade de energia renovável até 2030.</dd>
+                </div>
+              </dl>
+            </div>
+            <figure class="tl-card__arte">
+              <img class="tl-card__img" src="imagens/Imagens-tela-timeline/cop-2023-dubai.svg"
+                   alt="Ilustração de Dubai: arranha-céus recortados na neblina quente sobre as dunas"
+                   width="1000" height="750" loading="lazy">
+            </figure>
+          </article>
+        </li>
+
+        <!-- ---------- 2024 ---------- -->
+        <li class="tl-item tl-item--dir" id="cop-2024" data-ano="2024">
+          <article class="tl-card">
+            <div class="tl-card__painel">
+              <p class="tl-card__selo">COP 29</p>
+              <h2 class="tl-card__ano">2024</h2>
+              <p class="tl-card__local">Baku, Azerbaijão</p>
+              <p class="tl-card__resumo">
+                Apelidada de “COP do financiamento”. A tarefa era substituir a promessa antiga de
+                cem bilhões de dólares por ano, que venceria em 2025, por um compromisso novo e maior.
+              </p>
+              <dl class="tl-fatos">
+                <div class="tl-fato">
+                  <dt>Ponto-chave</dt>
+                  <dd>Os países em desenvolvimento pediam pelo menos 1,3 trilhão de dólares por ano; os países ricos ofereciam bem menos.</dd>
+                </div>
+                <div class="tl-fato">
+                  <dt>Resultado</dt>
+                  <dd>A Nova Meta Coletiva Quantificada ficou em trezentos bilhões de dólares por ano até 2035, com um apelo para que o total mobilizado chegue a 1,3 trilhão. O acordo foi recebido com forte insatisfação pelos mais vulneráveis.</dd>
+                </div>
+              </dl>
+            </div>
+            <figure class="tl-card__arte">
+              <img class="tl-card__img" src="imagens/Imagens-tela-timeline/cop-2024-baku.svg"
+                   alt="Ilustração de Baku: as três torres em forma de chama diante do mar Cáspio"
+                   width="1000" height="750" loading="lazy">
+            </figure>
+          </article>
+        </li>
+
+        <!-- ---------- 2025 ---------- -->
+        <li class="tl-item tl-item--esq tl-item--marco" id="cop-2025" data-ano="2025">
+          <article class="tl-card">
+            <div class="tl-card__painel">
+              <p class="tl-card__selo">COP 30</p>
+              <h2 class="tl-card__ano">2025</h2>
+              <p class="tl-card__local">Belém, Brasil</p>
+              <p class="tl-card__resumo">
+                A primeira COP realizada na Amazônia, dez anos depois do Acordo de Paris. Aconteceu
+                em novembro de 2025 sob a ideia de mutirão: cada país trazendo o que consegue fazer,
+                em vez de esperar por um acordo único que resolva tudo.
+              </p>
+              <dl class="tl-fatos">
+                <div class="tl-fato">
+                  <dt>Ponto-chave</dt>
+                  <dd>O foco saiu da negociação de metas novas e foi para a implementação das antigas, para o papel das florestas tropicais e para os povos indígenas e comunidades tradicionais.</dd>
+                </div>
+                <div class="tl-fato">
+                  <dt>Resultado</dt>
+                  <dd>Avançaram o compromisso de triplicar o financiamento para adaptação até 2035 e o fundo para florestas tropicais. O cronograma para abandonar os combustíveis fósseis ficou de fora do texto oficial, por falta de consenso.</dd>
+                </div>
+              </dl>
+            </div>
+            <figure class="tl-card__arte">
+              <img class="tl-card__img" src="imagens/Imagens-tela-timeline/cop-2025-belem.svg"
+                   alt="Ilustração da Amazônia: rio largo, neblina sobre a floresta densa e açaizeiros"
+                   width="1000" height="750" loading="lazy">
+            </figure>
+          </article>
+        </li>
+
+      </ol>
+    </div>
+
+    <!-- ---------- fecho ---------- -->
+    <section class="tl-fecho tl-entra">
+      <p class="tl-etiqueta">E daqui em diante?</p>
+      <p class="tl-fecho__texto">
+        Trinta e três anos de conferências não resolveram o problema, mas construíram a única
+        coisa que nenhum país consegue sozinho: um acordo sobre o que precisa ser feito. O resto
+        acontece fora das salas de negociação — nas cidades, nas empresas e nas escolhas de cada dia.
+      </p>
+      <a class="eco-btn eco-btn--principal tl-fecho__botao" href="entraves.html">Ver os entraves dessa luta</a>
+    </section>
+
+  </div>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<!-- montado por js/layout.js; "escuro" porque nesta página o rodapé é preto -->
+<div data-eco-rodape data-variante="escuro"></div>
+
+<!-- layout.js vem antes: o script.js precisa achar o cabeçalho já no lugar -->
+<script src="js/layout.js"></script>
+<script src="script.js"></script>
+<script src="js/timeline.js"></script>
+</body>
+</html>

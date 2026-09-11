@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcoClima — Notícias</title>
+<meta name="description" content="Plantão do clima: queimadas, degelo, desmatamento e eventos extremos explicados em linguagem simples — e o que dá para fazer a respeito.">
+<link rel="icon" href="imagens/Logo-preto.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wdth,wght@62..125,100..900&family=DM+Sans:opsz,wght@9..40,300..800&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js");</script>
+<!-- base.css traz as variáveis e os componentes eco-; style.css traz a identidade
+     (navbar, footer); css/noticias.css só o que é desta página -->
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/noticias.css">
+</head>
+<body class="nt-pagina">
+
+<!-- ============ NAVBAR ============ -->
+<!-- montada por js/layout.js -->
+<div data-eco-cabecalho></div>
+
+<!-- ============ FAIXA DO PLANTÃO ============ -->
+<!-- Fica fixa embaixo da navbar e acompanha a rolagem da página inteira.
+     Os id #marquee e #marqueeTrack são os que o script.js procura para
+     rodar o laço infinito — os mesmos já usados na Home. -->
+<div class="nt-faixa" id="marquee">
+  <p class="eco-so-leitor">Plantão do clima, atualizado 24 horas por dia.</p>
+  <div class="nt-faixa__trilho" id="marqueeTrack" aria-hidden="true">
+    <span class="nt-faixa__item">Notícias 24hrs por dia</span>
+    <span class="nt-faixa__item">Notícias 24hrs por dia</span>
+    <span class="nt-faixa__item">Notícias 24hrs por dia</span>
+    <span class="nt-faixa__item">Notícias 24hrs por dia</span>
+    <span class="nt-faixa__item">Notícias 24hrs por dia</span>
+    <span class="nt-faixa__item">Notícias 24hrs por dia</span>
+    <span class="nt-faixa__item">Notícias 24hrs por dia</span>
+    <span class="nt-faixa__item">Notícias 24hrs por dia</span>
+    <span class="nt-faixa__item">Notícias 24hrs por dia</span>
+    <span class="nt-faixa__item">Notícias 24hrs por dia</span>
+    <span class="nt-faixa__item">Notícias 24hrs por dia</span>
+    <span class="nt-faixa__item">Notícias 24hrs por dia</span>
+    <span class="nt-faixa__item">Notícias 24hrs por dia</span>
+    <span class="nt-faixa__item">Notícias 24hrs por dia</span>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- ============ ABERTURA ============ -->
+  <header class="nt-topo">
+    <div class="wrap">
+      <div class="nt-topo__linha">
+        <div>
+          <p class="nt-etiqueta">Plantão do clima</p>
+          <h1 class="nt-topo__titulo">NOTÍCIAS</h1>
+        </div>
+        <p class="nt-topo__texto">
+          O que está acontecendo com a floresta, o gelo e o clima — contado sem
+          jargão, com a fonte sempre à vista. E, no fim de cada página, o que
+          dá para fazer com o que você acabou de ler.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ DESTAQUES ============ -->
+  <section class="wrap nt-destaques reveal-up" aria-label="Principais notícias">
+
+    <!-- ---------- destaque grande ---------- -->
+    <article class="nt-card nt-card--grande">
+      <img class="nt-card__foto" src="imagens/Imagens-tela-noticias/queimada-amazonia.svg"
+           alt="Ilustração da floresta amazônica tomada por fumaça, com o fogo correndo na linha das árvores"
+           width="1000" height="750" fetchpriority="high">
+      <p class="nt-card__selo">Queimadas</p>
+      <h2 class="nt-card__titulo">
+        <a class="nt-card__link" href="#" data-soon>Queimadas na Amazônia aumentam e ameaçam a preservação da floresta</a>
+      </h2>
+      <p class="nt-card__resumo">
+        O avanço dos incêndios intensifica os impactos ambientais, prejudica a
+        biodiversidade e afeta as comunidades que dependem da floresta em pé.
+      </p>
+      <span class="nt-card__acao">
+        Ver mais
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
+        </svg>
+      </span>
+    </article>
+
+    <!-- ---------- destaque menor 1 ---------- -->
+    <article class="nt-card nt-card--pequeno">
+      <img class="nt-card__foto" src="imagens/Imagens-tela-noticias/geleira-degelo.svg"
+           alt="Ilustração de uma frente de geleira azulada se partindo sobre água fria"
+           width="1000" height="750" loading="lazy">
+      <p class="nt-card__selo">Degelo</p>
+      <h2 class="nt-card__titulo">
+        <a class="nt-card__link" href="#" data-soon>Derretimento de geleiras causa impactos em cadeia</a>
+      </h2>
+      <p class="nt-card__resumo">
+        É o segundo maior fator de elevação do nível do mar, alerta a Organização Meteorológica Mundial.
+      </p>
+    </article>
+
+    <!-- ---------- destaque menor 2 ---------- -->
+    <article class="nt-card nt-card--pequeno">
+      <img class="nt-card__foto" src="imagens/Imagens-tela-noticias/ventania-litoral.svg"
+           alt="Ilustração de litoral ao entardecer com mar agitado e nuvens esticadas pelo vento"
+           width="1000" height="750" loading="lazy">
+      <p class="nt-card__selo">Alerta</p>
+      <h2 class="nt-card__titulo">
+        <a class="nt-card__link" href="#" data-soon>Ventania forte interrompe atividades ao ar livre no litoral do Rio</a>
+      </h2>
+      <p class="nt-card__resumo">
+        Cidade tem alerta de ventos de até 90 km/h; parques e trilhas foram fechados por precaução.
+      </p>
+    </article>
+
+  </section>
+
+  <!-- ============ NOTICIÁRIOS ============ -->
+  <section class="nt-noticiarios" id="noticiarios">
+    <div class="wrap">
+
+      <div class="nt-secao__cabeca reveal-up">
+        <svg class="nt-folha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 21c0-5 1-8 6-11-6 0-9 2-10 6"/><path d="M12 21c0-4-2-7-6-8 0-4 3-6 7-6"/>
+        </svg>
+        <h2 class="nt-secao__titulo">Noticiários</h2>
+      </div>
+
+      <div class="nt-grade">
+
+        <!-- ---------- lista principal ---------- -->
+        <ul class="nt-lista">
+
+          <li class="reveal-up">
+            <article class="nt-nota">
+              <img class="nt-nota__foto" src="imagens/Imagens-tela-noticias/area-queimada.svg"
+                   alt="Ilustração de área queimada com troncos carbonizados e brotos verdes no chão"
+                   width="1000" height="750" loading="lazy">
+              <div>
+                <p class="nt-nota__selo">Queimadas no Brasil</p>
+                <h3 class="nt-nota__titulo">
+                  <a class="nt-nota__link" href="#" data-soon>Área queimada no Brasil cai 31% em 2025; Cerrado concentra 69% do total</a>
+                </h3>
+                <p class="nt-nota__texto">
+                  O país registrou 12,7 milhões de hectares atingidos pelo fogo, número abaixo da
+                  média das últimas quatro décadas. A Amazônia teve o menor total da série histórica.
+                </p>
+                <p class="nt-nota__pe">
+                  <span class="nt-nota__fonte">MapBiomas Fogo</span>
+                  <span>há 2 meses</span>
+                </p>
+              </div>
+            </article>
+          </li>
+
+          <li class="reveal-up">
+            <article class="nt-nota">
+              <img class="nt-nota__foto" src="imagens/Imagens-tela-noticias/degelo-alpes.svg"
+                   alt="Ilustração de montanhas com pouca neve e lago de degelo turquesa ao pé da geleira"
+                   width="1000" height="750" loading="lazy">
+              <div>
+                <p class="nt-nota__selo">Derretimento de geleiras</p>
+                <h3 class="nt-nota__titulo">
+                  <a class="nt-nota__link" href="#" data-soon>Onda de calor acelera o degelo nos Alpes e derruba o recorde do século</a>
+                </h3>
+                <p class="nt-nota__texto">
+                  A perda de gelo em uma única semana equivale ao volume de várias piscinas
+                  olímpicas por segundo. A água de degelo já muda o regime dos rios na Europa.
+                </p>
+                <p class="nt-nota__pe">
+                  <span class="nt-nota__fonte">Organização Meteorológica Mundial</span>
+                  <span>há 4 dias</span>
+                </p>
+              </div>
+            </article>
+          </li>
+
+          <li class="reveal-up">
+            <article class="nt-nota">
+              <img class="nt-nota__foto" src="imagens/Imagens-tela-noticias/desmatamento.svg"
+                   alt="Ilustração de clareira aberta na floresta, com tocos cortados e um tronco caído"
+                   width="1000" height="750" loading="lazy">
+              <div>
+                <p class="nt-nota__selo">Desmatamento na Amazônia</p>
+                <h3 class="nt-nota__titulo">
+                  <a class="nt-nota__link" href="#" data-soon>Amazônia perdeu 500 mil km² de floresta em 37 anos, aponta levantamento</a>
+                </h3>
+                <p class="nt-nota__texto">
+                  O dado preocupa porque o bioma pode estar chegando a um ponto irreversível
+                  de destruição, no qual a floresta deixa de conseguir produzir a própria chuva.
+                </p>
+                <p class="nt-nota__pe">
+                  <span class="nt-nota__fonte">MapBiomas</span>
+                  <span>há 12 horas</span>
+                </p>
+              </div>
+            </article>
+          </li>
+
+          <li class="reveal-up">
+            <article class="nt-nota">
+              <img class="nt-nota__foto" src="imagens/Imagens-tela-noticias/ciclone.svg"
+                   alt="Ilustração de imagem de satélite mostrando um ciclone em espiral sobre o oceano"
+                   width="1000" height="750" loading="lazy">
+              <div>
+                <p class="nt-nota__selo">Ciclones</p>
+                <h3 class="nt-nota__titulo">
+                  <a class="nt-nota__link" href="#" data-soon>Ciclone começa a se formar no Sul nesta quinta; ar frio avança pelo país</a>
+                </h3>
+                <p class="nt-nota__texto">
+                  O sistema traz chuva forte e rajadas no litoral catarinense e gaúcho. Moradores
+                  de área de risco devem acompanhar os avisos da Defesa Civil.
+                </p>
+                <p class="nt-nota__pe">
+                  <span class="nt-nota__fonte">Inmet</span>
+                  <span>há 9 horas</span>
+                </p>
+              </div>
+            </article>
+          </li>
+
+          <li class="reveal-up">
+            <article class="nt-nota">
+              <img class="nt-nota__foto" src="imagens/Imagens-tela-noticias/calor-extremo.svg"
+                   alt="Ilustração de sol branco e forte sobre solo rachado pela seca"
+                   width="1000" height="750" loading="lazy">
+              <div>
+                <p class="nt-nota__selo">Mudanças climáticas</p>
+                <h3 class="nt-nota__titulo">
+                  <a class="nt-nota__link" href="#" data-soon>Número de dias com calor acima de 50 °C dobrou no mundo em 40 anos</a>
+                </h3>
+                <p class="nt-nota__texto">
+                  O fenômeno também passou a acontecer em mais regiões do planeta. O calor extremo
+                  pode ser mortal e castiga estradas, redes de energia e plantações.
+                </p>
+                <p class="nt-nota__pe">
+                  <span class="nt-nota__fonte">Análise de dados da NASA e da NOAA</span>
+                  <span>atualizado há 3 dias</span>
+                </p>
+              </div>
+            </article>
+          </li>
+
+          <li class="reveal-up">
+            <article class="nt-nota">
+              <img class="nt-nota__foto" src="imagens/Imagens-tela-noticias/agroecologia.svg"
+                   alt="Ilustração de área restaurada com fileiras de mudas plantadas diante da mata"
+                   width="1000" height="750" loading="lazy">
+              <div>
+                <p class="nt-nota__selo">Tem solução</p>
+                <h3 class="nt-nota__titulo">
+                  <a class="nt-nota__link" href="#" data-soon>Agroecologia e reflorestamento transformam paisagens no interior de São Paulo</a>
+                </h3>
+                <p class="nt-nota__texto">
+                  Projetos apostam na recuperação do solo, na preservação da biodiversidade e no
+                  reflorestamento para produzir alimento sem secar as nascentes da região.
+                </p>
+                <p class="nt-nota__pe">
+                  <span class="nt-nota__fonte">Reportagem local</span>
+                  <span>há 5 dias</span>
+                </p>
+              </div>
+            </article>
+          </li>
+
+        </ul>
+
+        <!-- ---------- painéis laterais ---------- -->
+        <aside class="nt-aside">
+
+          <section class="nt-painel" aria-labelledby="tituloViu">
+            <h2 class="nt-painel__titulo" id="tituloViu">Viu isso?</h2>
+            <ul class="nt-painel__lista">
+
+              <li>
+                <article class="nt-viu">
+                  <div>
+                    <h3 class="nt-viu__titulo">
+                      <a class="nt-viu__link" href="#" data-soon>As mudanças climáticas estão encolhendo os animais?</a>
+                    </h3>
+                    <p class="nt-viu__texto">
+                      Cientistas de vários países detectaram que o corpo de muitas espécies está diminuindo,
+                      e o fenômeno vem sendo relacionado ao aquecimento global.
+                    </p>
+                  </div>
+                  <img class="nt-viu__foto" src="imagens/Imagens-tela-noticias/fauna-especies.svg"
+                       alt="Ilustração de pássaro pousado em um galho diante da mata verde"
+                       width="1000" height="750" loading="lazy">
+                </article>
+              </li>
+
+              <li>
+                <article class="nt-viu">
+                  <div>
+                    <h3 class="nt-viu__titulo">
+                      <a class="nt-viu__link" href="#" data-soon>A caça às nuvens de metano que podem ser vistas do espaço</a>
+                    </h3>
+                    <p class="nt-viu__texto">
+                      Satélites cada vez mais precisos identificam vazamentos do gás lá de cima — uma
+                      peça-chave na conta do aquecimento global.
+                    </p>
+                  </div>
+                  <img class="nt-viu__foto" src="imagens/Imagens-tela-noticias/metano-satelite.svg"
+                       alt="Ilustração da Terra vista do espaço com uma pluma de metano detectada por satélite"
+                       width="1000" height="750" loading="lazy">
+                </article>
+              </li>
+
+              <li>
+                <article class="nt-viu">
+                  <div>
+                    <h3 class="nt-viu__titulo">
+                      <a class="nt-viu__link" href="#" data-soon>Corais branqueados: o que o mar quente deixou para trás</a>
+                    </h3>
+                    <p class="nt-viu__texto">
+                      Quando a água esquenta demais, o coral expulsa a alga que o alimenta e fica branco.
+                      Recifes inteiros já passaram por isso.
+                    </p>
+                  </div>
+                  <img class="nt-viu__foto" src="imagens/Imagens-tela-noticias/oceano-corais.svg"
+                       alt="Ilustração de recife com corais coloridos de um lado e corais branqueados do outro"
+                       width="1000" height="750" loading="lazy">
+                </article>
+              </li>
+
+            </ul>
+          </section>
+
+          <section class="nt-painel" aria-labelledby="tituloLidas">
+            <h2 class="nt-painel__titulo" id="tituloLidas">As mais lidas</h2>
+            <ol class="nt-painel__lista">
+
+              <li>
+                <article class="nt-lida">
+                  <p class="nt-lida__num" aria-hidden="true">1</p>
+                  <h3 class="nt-lida__titulo">
+                    <a class="nt-lida__link" href="#" data-soon>Seca e mudanças climáticas levam dois dos maiores reservatórios dos EUA ao nível mais baixo da história</a>
+                  </h3>
+                </article>
+              </li>
+
+              <li>
+                <article class="nt-lida">
+                  <p class="nt-lida__num" aria-hidden="true">2</p>
+                  <h3 class="nt-lida__titulo">
+                    <a class="nt-lida__link" href="#" data-soon>Quais são as 18 espécies de árvores que sustentam a Amazônia na luta contra o aquecimento global</a>
+                  </h3>
+                </article>
+              </li>
+
+              <li>
+                <article class="nt-lida">
+                  <p class="nt-lida__num" aria-hidden="true">3</p>
+                  <h3 class="nt-lida__titulo">
+                    <a class="nt-lida__link" href="#" data-soon>Como o El Niño pode afetar a economia global e fazer subir o preço dos alimentos</a>
+                  </h3>
+                </article>
+              </li>
+
+              <li>
+                <article class="nt-lida">
+                  <p class="nt-lida__num" aria-hidden="true">4</p>
+                  <h3 class="nt-lida__titulo">
+                    <a class="nt-lida__link" href="#" data-soon>Tambaqui entra na lista do Ministério do Meio Ambiente como ameaçado de extinção</a>
+                  </h3>
+                </article>
+              </li>
+
+              <li>
+                <article class="nt-lida">
+                  <p class="nt-lida__num" aria-hidden="true">5</p>
+                  <h3 class="nt-lida__titulo">
+                    <a class="nt-lida__link" href="#" data-soon>Cidade do interior recebe evento gratuito sobre tecnologia e sustentabilidade no campo</a>
+                  </h3>
+                </article>
+              </li>
+
+            </ol>
+          </section>
+
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MATÉRIAS ============ -->
+  <section class="nt-materias" id="materias">
+    <div class="wrap">
+
+      <div class="nt-secao__cabeca reveal-up">
+        <svg class="nt-folha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 21c0-5 1-8 6-11-6 0-9 2-10 6"/><path d="M12 21c0-4-2-7-6-8 0-4 3-6 7-6"/>
+        </svg>
+        <h2 class="nt-secao__titulo">Matérias</h2>
+      </div>
+
+      <ul class="nt-videos">
+
+        <li class="nt-video reveal-up">
+          <div class="nt-video__moldura">
+            <img class="nt-video__foto" src="imagens/Imagens-tela-noticias/video-fumaca.svg"
+                 alt="Ilustração de colunas de fumaça subindo da mata queimada"
+                 width="1000" height="563" loading="lazy">
+            <span class="nt-video__play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>
+            </span>
+          </div>
+          <h3 class="nt-video__titulo">
+            <a class="nt-video__link" href="#" data-soon>Queimada na Amazônia: a fumaça e o ar que a gente respira</a>
+          </h3>
+          <p class="nt-video__texto">Reportagem especial · 12 min</p>
+        </li>
+
+        <li class="nt-video reveal-up">
+          <div class="nt-video__moldura">
+            <img class="nt-video__foto" src="imagens/Imagens-tela-noticias/video-geleira.svg"
+                 alt="Ilustração de um bloco de gelo se soltando da geleira e caindo na água"
+                 width="1000" height="563" loading="lazy">
+            <span class="nt-video__play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>
+            </span>
+          </div>
+          <h3 class="nt-video__titulo">
+            <a class="nt-video__link" href="#" data-soon>Satélites mostram a aceleração do derretimento das geleiras</a>
+          </h3>
+          <p class="nt-video__texto">Explicador · 7 min</p>
+        </li>
+
+        <li class="nt-video reveal-up">
+          <div class="nt-video__moldura">
+            <img class="nt-video__foto" src="imagens/Imagens-tela-noticias/video-ciclone.svg"
+                 alt="Ilustração de radar meteorológico com um ciclone se formando"
+                 width="1000" height="563" loading="lazy">
+            <span class="nt-video__play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>
+            </span>
+          </div>
+          <h3 class="nt-video__titulo">
+            <a class="nt-video__link" href="#" data-soon>Ciclone no Sul: como se forma e o que fazer antes de ele chegar</a>
+          </h3>
+          <p class="nt-video__texto">Explicador · 9 min</p>
+        </li>
+
+        <li class="nt-video reveal-up">
+          <div class="nt-video__moldura">
+            <img class="nt-video__foto" src="imagens/Imagens-tela-noticias/video-restauracao.svg"
+                 alt="Ilustração de mudas com tutor plantadas em fileiras numa área em recuperação"
+                 width="1000" height="563" loading="lazy">
+            <span class="nt-video__play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>
+            </span>
+          </div>
+          <h3 class="nt-video__titulo">
+            <a class="nt-video__link" href="#" data-soon>Como uma área desmatada volta a virar floresta</a>
+          </h3>
+          <p class="nt-video__texto">Série Tem Solução · 15 min</p>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ O QUE FAZER COM ISSO ============ -->
+  <!-- O fecho da página: a notícia acaba, mas o assunto não. -->
+  <section class="nt-cuidar" data-nav="dark">
+    <div class="wrap">
+
+      <div class="nt-secao__cabeca reveal-up">
+        <svg class="nt-folha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 21c0-5 1-8 6-11-6 0-9 2-10 6"/><path d="M12 21c0-4-2-7-6-8 0-4 3-6 7-6"/>
+        </svg>
+        <h2 class="nt-secao__titulo">Ler é o começo</h2>
+      </div>
+
+      <p class="nt-cuidar__texto reveal-up">
+        Acompanhar o noticiário do clima cansa, e é fácil fechar a página com a
+        sensação de que nada do que a gente faz muda alguma coisa. Mas quase toda
+        notícia daqui tem um lado que depende de escolhas comuns — as nossas.
+      </p>
+
+      <ul class="nt-acoes">
+
+        <li class="nt-acao reveal-up">
+          <svg class="nt-acao__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 21c0-5 1-8 6-11-6 0-9 2-10 6"/><path d="M12 21c0-4-2-7-6-8 0-4 3-6 7-6"/>
+          </svg>
+          <h3 class="nt-acao__titulo">Confira a fonte antes de repassar</h3>
+          <p class="nt-acao__texto">
+            Toda nota desta página mostra de onde veio o dado. Boato sobre clima atrasa
+            decisão, e checar leva menos tempo do que compartilhar.
+          </p>
+        </li>
+
+        <li class="nt-acao reveal-up">
+          <svg class="nt-acao__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 12h4l2.5-7 5 14L17.5 12H21"/>
+          </svg>
+          <h3 class="nt-acao__titulo">Fique de olho no alerta da sua cidade</h3>
+          <p class="nt-acao__texto">
+            Ciclone, calor extremo e seca chegam com aviso. A Defesa Civil manda alertas
+            gratuitos por SMS, e saber com antecedência protege quem está perto de você.
+          </p>
+        </li>
+
+        <li class="nt-acao reveal-up">
+          <svg class="nt-acao__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 20v-8"/><path d="M12 12c0-3 2-5 6-5 0 4-2 6-6 6z"/><path d="M12 14c0-2.5-1.8-4.5-5-4.5 0 3.5 1.8 5 5 5z"/>
+          </svg>
+          <h3 class="nt-acao__titulo">Uma árvore de cada vez também conta</h3>
+          <p class="nt-acao__texto">
+            Restauração não é só coisa de governo: mutirão de plantio, horta de bairro e
+            nascente cercada aparecem nos dados de recuperação ano após ano.
+          </p>
+        </li>
+
+      </ul>
+
+      <p class="nt-cuidar__nota reveal-up">
+        Quer entender como o mundo chegou até aqui? A
+        <a class="eco-link" href="timeline.html">linha do tempo das COPs</a> conta os
+        trinta e três anos de negociação que estão por trás dessas manchetes.
+      </p>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<!-- montado por js/layout.js -->
+<div data-eco-rodape></div>
+
+<!-- layout.js vem antes: o script.js precisa achar o cabeçalho já no lugar -->
+<script src="js/layout.js"></script>
+<script src="script.js"></script>
+<script src="js/noticias.js"></script>
+</body>
+</html>

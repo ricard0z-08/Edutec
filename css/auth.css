@@ -1,0 +1,414 @@
+/* =========================================================
+   ECOCLIMA — auth.css
+   Cadastro, Login e Esqueci minha senha.
+
+   As três telas têm o mesmo esqueleto: formulário à esquerda,
+   imagem à direita. No celular a imagem some.
+
+   Variáveis, botões, campos e aviso vêm do css/base.css.
+   Estas páginas não usam o style.css nem o cabeçalho
+   compartilhado — são telas fechadas, só com o logotipo.
+   ========================================================= */
+
+/* =========================================================
+   1. Esqueleto das duas colunas
+   ========================================================= */
+.auth{
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--claro);
+  position: relative;
+}
+
+/* coluna do formulário */
+.auth__forma{
+  display: grid;
+  align-content: center;
+  padding: clamp(3.5rem, 8vh, 5rem) clamp(1.5rem, 7vw, 6rem);
+}
+
+.auth__conteudo{ width: min(100%, 26rem); }
+
+/* logotipo "m" no topo da coluna */
+.auth__logo{
+  display: block;
+  width: clamp(58px, 6vw, 84px);
+  margin: 0 auto clamp(2rem, 5vh, 3.4rem);
+}
+.auth__logo img{ width: 100%; height: auto; display: block; }
+
+/* no cadastro o logotipo fica centralizado na página inteira,
+   e não só na coluna do formulário */
+.auth--logo-pagina .auth__logo{
+  position: absolute;
+  top: clamp(1.5rem, 4vh, 2.6rem);
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+}
+
+/* =========================================================
+   2. Coluna da imagem
+
+   As duas imagens são decorativas, então entram por CSS e só
+   acima de 768px: assim o celular, que nem mostra a coluna,
+   também não baixa arquivo grande à toa.
+   ========================================================= */
+.auth__midia{ display: none; }
+
+@media (min-width: 769px){
+  .auth__midia{
+    display: block;
+    background-repeat: no-repeat;
+  }
+  /* árvore recortada, solta sobre o mesmo fundo da página
+
+     REVISAR — a imagem certa seria a da pasta da tela de cadastro
+     (imagens/Imagens-tela-cadastro/arvore-cadastro.png), mas esse
+     arquivo foi salvo com o quadriculado de transparência dentro:
+     metade dos pixels são quadradinhos brancos e cinzas opacos, que
+     aparecem como um tabuleiro atrás da árvore. Enquanto ele não for
+     exportado de novo com fundo transparente, esta tela usa a
+     arvore-um.png, que está recortada de verdade. */
+  .auth__midia--arvore{
+    background-image: url("../imagens/Imagens-tela-boas-vindas/arvore-um.png");
+    background-position: center;
+    background-size: min(72%, 400px) auto;
+  }
+  /* foto ocupando a coluna inteira, até a borda */
+  .auth__midia--foto{
+    background-image: url("../imagens/Imagens-tela-login/imagem-floresta-login.png");
+    background-position: center;
+    background-size: cover;
+  }
+}
+
+/* =========================================================
+   3. Textos da tela
+   ========================================================= */
+.auth__titulo{
+  font-family: var(--fonte-texto);
+  font-size: clamp(1.6rem, 2.6vw, 2.05rem);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -.02em;
+  color: var(--verde-escuro);
+  margin: 0 0 1.1rem;
+}
+
+.auth__texto{
+  font-size: .85rem;
+  line-height: 1.45;
+  color: var(--cinza);
+  margin: 0 0 clamp(2rem, 5vh, 3rem);
+  max-width: 34ch;
+}
+.auth__texto a{
+  color: var(--verde);
+  font-weight: 700;
+  text-decoration: none;
+}
+.auth__texto a:hover{ text-decoration: underline; }
+
+/* =========================================================
+   4. Formulário
+   ========================================================= */
+.auth__form{
+  display: grid;
+  gap: 1.35rem;
+}
+/* o [hidden] precisa vencer o display de cima (o formulário some
+   depois que o link de nova senha é enviado) */
+.auth__form[hidden]{ display: none; }
+
+/* campo com botão dentro (o olho da senha) */
+.auth__entrada-caixa{
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.auth__entrada-caixa .eco-campo__entrada{ padding-right: 2.4rem; }
+
+.auth__olho{
+  position: absolute;
+  right: 0;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--cinza);
+  cursor: pointer;
+  transition: color .25s var(--eco-suave);
+}
+.auth__olho:hover{ color: var(--verde-escuro); }
+.auth__olho .eco-icone{ width: 20px; height: 20px; }
+/* a barra que cruza o olho só aparece quando a senha está escondida */
+.auth__olho[aria-pressed="true"] .auth__olho-corte{ display: none; }
+
+/* ---------- Força da senha ---------- */
+.auth__forca{
+  display: grid;
+  gap: .35rem;
+  margin-top: .1rem;
+}
+.auth__forca[hidden]{ display: none; }
+
+.auth__forca-trilho{
+  height: 4px;
+  border-radius: var(--eco-pilula);
+  background: var(--borda);
+  overflow: hidden;
+}
+.auth__forca-barra{
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: var(--eco-pilula);
+  background: var(--cinza);
+  transition: width .3s var(--eco-suave), background .3s var(--eco-suave);
+}
+.auth__forca-texto{
+  font-size: .78rem;
+  color: var(--cinza);
+  margin: 0;
+}
+
+.auth__forca--fraca .auth__forca-barra{ width: 33%;  background: var(--terracota); }
+.auth__forca--media .auth__forca-barra{ width: 66%;  background: var(--cinza); }
+.auth__forca--forte .auth__forca-barra{ width: 100%; background: var(--verde); }
+.auth__forca--fraca .auth__forca-texto{ color: var(--terracota); }
+.auth__forca--forte .auth__forca-texto{ color: var(--verde); }
+
+/* ---------- Caixa de seleção dos termos ---------- */
+.auth__termos{ display: grid; }
+
+.auth__termos-rotulo{
+  display: flex;
+  align-items: flex-start;
+  gap: .6rem;
+  font-size: .82rem;
+  line-height: 1.4;
+  color: var(--verde-escuro);
+  cursor: pointer;
+}
+.auth__caixa{
+  flex: 0 0 auto;
+  width: 1rem;
+  height: 1rem;
+  margin: .1rem 0 0;
+  accent-color: var(--verde);
+  cursor: pointer;
+}
+/* enquanto não existem as páginas de Termos e Privacidade,
+   estes nomes são texto comum — viram link na Etapa 10 */
+.auth__termos-rotulo strong{ font-weight: 700; }
+
+.eco-campo--erro .auth__caixa{ outline: 2px solid var(--terracota); outline-offset: 2px; }
+
+/* ---------- Link "Esqueci minha senha" ---------- */
+.auth__link-menor{
+  justify-self: start;
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--verde);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.auth__link-menor:hover{ border-bottom-color: currentColor; }
+
+/* ---------- Botão principal ---------- */
+.auth__enviar{
+  justify-self: start;
+  min-width: 10rem;
+  margin-top: .6rem;
+}
+
+/* indicador girando dentro do botão */
+.auth__girando{
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: authGirar .7s linear infinite;
+}
+@keyframes authGirar{ to{ transform: rotate(360deg); } }
+
+/* =========================================================
+   5. Cartão de "Conta criada!"
+   ========================================================= */
+.auth__sucesso{
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: rgba(15, 26, 16, .55);      /* --verde-escuro translúcido */
+  animation: authAparecer .25s var(--eco-suave);
+}
+.auth__sucesso[hidden]{ display: none; }
+
+.auth__sucesso-cartao{
+  width: min(100%, 24rem);
+  padding: clamp(1.8rem, 5vw, 2.4rem);
+  text-align: center;
+  background: var(--claro);
+  border-radius: var(--eco-raio);
+  animation: authSubir .3s var(--eco-suave);
+}
+.auth__sucesso-titulo{
+  font-family: var(--fonte-texto);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--verde-escuro);
+  margin: 1rem 0 .5rem;
+}
+.auth__sucesso-texto{
+  font-size: .9rem;
+  color: var(--cinza);
+  margin: 0 0 1.6rem;
+}
+
+/* check verde que se desenha */
+.auth__check{
+  width: 64px;
+  height: 64px;
+  margin: 0 auto;
+  display: block;
+  fill: none;
+  stroke: var(--verde);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.auth__check-roda{
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  animation: authRiscar .6s var(--eco-suave) forwards;
+}
+.auth__check-tique{
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: authRiscar .35s var(--eco-suave) .5s forwards;
+}
+@keyframes authRiscar{ to{ stroke-dashoffset: 0; } }
+@keyframes authAparecer{ from{ opacity: 0; } }
+@keyframes authSubir{ from{ opacity: 0; transform: translateY(14px); } }
+
+/* =========================================================
+   6. Tela de "link enviado" (esqueci minha senha)
+   ========================================================= */
+.auth__enviado[hidden]{ display: none; }
+.auth__enviado{ display: grid; gap: 1rem; justify-items: start; }
+
+.auth__enviado-texto{
+  font-size: .9rem;
+  line-height: 1.5;
+  color: var(--verde-escuro);
+  margin: 0;
+}
+.auth__enviado-texto strong{ font-weight: 700; }
+
+/* =========================================================
+   7. Computador: tudo em porcentagem da tela
+
+   As medidas abaixo saíram das telas do Figma, convertidas em
+   porcentagem da largura da página (1vw = 1% da tela). Assim a
+   tela é a mesma foto ampliada em 1280, 1920 ou 2560 — que era o
+   defeito da Etapa 2: os tamanhos paravam de crescer e o
+   conteúdo ficava pequeno e encostado à esquerda em tela grande.
+
+   O max(...) é só um piso: entra quando alguém encolhe a janela
+   para menos de ~1280px, para o texto não ficar ilegível.
+   ========================================================= */
+@media (min-width: 769px){
+  /* O texto começa a 16,6% da coluna e ocupa 76,5% dela. A margem
+     mora no conteúdo, e não na coluna, porque o logotipo precisa
+     ficar no centro da coluna inteira, como na referência. */
+  /* 4vh em cima e embaixo: é o que faz o cadastro inteiro caber
+     numa tela 16:9 sem rolagem */
+  .auth__forma{ padding: 4vh 0; }
+  .auth__conteudo{
+    width: 76.5%;
+    margin-left: 16.6%;
+  }
+
+  .auth__logo{
+    width: 7.5vw;                 /* ~90px em 1200, ~192px em 2560 */
+    margin-bottom: 5vh;
+  }
+  .auth--logo-pagina .auth__logo{ top: 2.2vh; }
+
+  /* título e parágrafo quebram antes do campo (76% do bloco, que dá
+     ~29% da tela), como na referência — no cadastro isso também
+     mantém o texto longe do logotipo, que fica no centro da página */
+  .auth__titulo{
+    font-size: max(1.5rem, 2.32vw);
+    margin-bottom: 1.1vw;
+    max-width: 76%;
+  }
+  .auth__texto{
+    font-size: max(.8rem, 1.04vw);
+    margin-bottom: max(2rem, 4.2vw);
+    max-width: 76%;
+  }
+
+  .auth__form{ gap: max(1.1rem, 2.2vw); }
+
+  .auth .eco-campo__rotulo{ font-size: max(.78rem, 1vw); margin-bottom: .8vw; }
+  .auth .eco-campo__entrada{ font-size: max(.9rem, 1.17vw); padding: .55vw 0; }
+  .auth .eco-campo__erro{ font-size: max(.76rem, .95vw); }
+
+  .auth__entrada-caixa .eco-campo__entrada{ padding-right: 2.6vw; }
+  .auth__olho{ width: 2.2vw; height: 2.2vw; }
+  .auth__olho .eco-icone{ width: 1.5vw; height: 1.5vw; }
+
+  .auth__forca-texto{ font-size: max(.72rem, .9vw); }
+  .auth__termos-rotulo{ font-size: max(.76rem, .95vw); }
+  .auth__caixa{ width: 1.1vw; height: 1.1vw; }
+  .auth__link-menor{ font-size: max(.76rem, .95vw); }
+
+  .auth .eco-btn{
+    font-size: max(.9rem, 1.17vw);
+    padding: .9vw 1.9vw;
+    border-width: .12vw;
+  }
+  .auth__enviar{ min-width: 12.4vw; margin-top: .6vw; }
+  .auth__girando{ width: 1.1vw; height: 1.1vw; }
+
+  /* a árvore ocupa 58% da coluna, como na referência */
+  .auth__midia--arvore{ background-size: 58% auto; }
+
+  .auth__enviado{ gap: 1.4vw; }
+  .auth__enviado-texto{ font-size: max(.85rem, 1.1vw); }
+}
+
+/* =========================================================
+   8. Responsivo (celular e tablet)
+   ========================================================= */
+@media (max-width: 768px){
+  .auth{ grid-template-columns: 1fr; }
+  .auth__forma{ padding-inline: clamp(1.25rem, 7vw, 2.5rem); }
+  .auth__conteudo{ width: 100%; margin-left: 0; }
+  /* sem a segunda coluna, o logotipo do cadastro já fica no meio da tela */
+  .auth--logo-pagina .auth__logo{ position: static; transform: none; margin: 0 auto clamp(2rem, 5vh, 3rem); }
+  .auth__texto{ max-width: none; }
+  .auth__enviar{ justify-self: stretch; }
+}
+
+/* =========================================================
+   9. Movimento
+   ========================================================= */
+@media (prefers-reduced-motion: reduce){
+  .auth__girando{ animation: none; border-top-color: currentColor; opacity: .5; }
+  .auth__check-roda,
+  .auth__check-tique{ animation: none; stroke-dashoffset: 0; }
+  .auth__sucesso,
+  .auth__sucesso-cartao{ animation: none; }
+  .auth__forca-barra{ transition: none; }
+}

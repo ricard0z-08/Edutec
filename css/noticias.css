@@ -1,0 +1,617 @@
+/* =========================================================
+   ECOCLIMA — Página de Notícias
+   Fundo claro, cards com foto, faixa vermelha fixa no topo.
+
+   O vermelho é a única cor quente forte da página, e só aparece
+   onde significa "agora": a faixa do plantão e o play dos vídeos.
+   O resto segue a paleta do site (verde, areia, creme), porque
+   aqui não se noticia o meio ambiente de fora — se cuida dele.
+
+   Variáveis, botões e cards base vêm do base.css.
+   Navbar e rodapé vêm do style.css + js/layout.js.
+   ========================================================= */
+
+:root{
+  --nt-urgente:   #C4301C;   /* vermelho do plantão: só na faixa e no play */
+  --nt-urgente-2: #A8240F;   /* o mesmo vermelho um tom abaixo, para hover */
+  --nt-tinta:     #F6F1E7;   /* texto sobre foto e sobre o vermelho */
+  --nt-raio:      14px;
+
+  /* Medidas das duas barras fixas do topo. O js/noticias.js
+     sobrescreve com a altura real; estes valores são só o
+     ponto de partida para a página não "pular" ao carregar. */
+  --nt-nav-h:     72px;
+  --nt-faixa-h:   38px;
+}
+
+.nt-pagina{
+  background: var(--claro);
+  color: var(--verde-escuro);
+  /* abre espaço para a navbar e a faixa, que são fixas e não ocupam fluxo */
+  padding-top: calc(var(--nt-nav-h) + var(--nt-faixa-h));
+}
+
+/* âncoras internas param abaixo das duas barras, não atrás delas */
+.nt-pagina [id]{ scroll-margin-top: calc(var(--nt-nav-h) + var(--nt-faixa-h) + 1rem); }
+
+/* etiqueta pequena que abre seções e cards (mesma ideia da timeline) */
+.nt-etiqueta{
+  font-size: .74rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--verde);
+  margin: 0;
+}
+
+/* título de seção, com a folhinha à esquerda */
+.nt-secao__cabeca{
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  margin-bottom: clamp(1.4rem, 3vw, 2.2rem);
+}
+.nt-secao__titulo{
+  font-family: var(--f-display);
+  font-variation-settings: 'wdth' 88, 'wght' 700;
+  font-size: clamp(1.9rem, 4.5vw, 3rem);
+  line-height: 1;
+  letter-spacing: -.02em;
+  color: var(--verde-escuro);
+  margin: 0;
+}
+.nt-folha{
+  width: clamp(22px, 3vw, 30px);
+  height: auto;
+  flex: 0 0 auto;
+  color: var(--verde);
+}
+
+/* =========================================================
+   1. Faixa do plantão
+   Fica fixa abaixo da navbar e acompanha a pessoa a página
+   inteira — é o "24hrs por dia" dito pelo próprio layout.
+   O laço infinito é o mesmo motor do script.js (#marquee).
+   ========================================================= */
+.nt-faixa{
+  position: fixed;
+  top: var(--nt-nav-h);
+  left: 0;
+  right: 0;
+  z-index: 80;                 /* abaixo da navbar (90), acima do conteúdo */
+  overflow: hidden;
+  background: var(--nt-urgente);
+  color: var(--nt-tinta);
+  cursor: grab;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.nt-faixa.is-held{ cursor: grabbing; }
+
+/* sem padding lateral: o laço precisa de largura exata para não pular */
+.nt-faixa__trilho{
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+  width: max-content;
+  padding-block: .55rem;
+  will-change: transform;
+}
+.nt-faixa__item{
+  display: inline-flex;
+  align-items: center;
+  gap: .7rem;
+  flex: 0 0 auto;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+/* a bolinha antes de cada frase faz as vezes do "ao vivo" */
+.nt-faixa__item::before{
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--nt-tinta);
+  opacity: .85;
+}
+
+/* =========================================================
+   2. Abertura
+   ========================================================= */
+.nt-topo{
+  padding-top: clamp(2rem, 5vh, 3.4rem);
+  padding-bottom: clamp(1.6rem, 4vh, 2.6rem);
+}
+.nt-topo__linha{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+}
+.nt-topo__titulo{
+  font-family: var(--f-display);
+  font-variation-settings: 'wdth' 86, 'wght' 800;
+  font-size: clamp(2.6rem, 9vw, 6rem);
+  line-height: .9;
+  letter-spacing: -.03em;
+  margin: .3rem 0 0;
+}
+.nt-topo__texto{
+  max-width: 46ch;
+  font-size: clamp(.95rem, 1.6vw, 1.05rem);
+  color: var(--cinza);
+  margin: 0;
+}
+
+/* =========================================================
+   3. Destaques — um card grande e dois menores ao lado
+   ========================================================= */
+.nt-destaques{
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  grid-auto-rows: minmax(0, 1fr);
+  gap: clamp(.8rem, 1.6vw, 1.2rem);
+  padding-bottom: clamp(3rem, 8vh, 5rem);
+}
+
+/* o card é uma foto com o texto por cima; o link cobre tudo */
+.nt-card{
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 15rem;
+  padding: clamp(1.1rem, 2.2vw, 1.9rem);
+  border-radius: var(--nt-raio);
+  background: var(--verde-escuro);
+  color: var(--nt-tinta);
+}
+.nt-card--grande{
+  grid-row: span 2;
+  min-height: clamp(24rem, 52vh, 34rem);
+}
+.nt-card__foto{
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .8s var(--eco-suave);
+}
+/* o degradê é o que garante contraste do texto sobre qualquer foto */
+.nt-card::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  /* o escuro se concentra embaixo, onde mora o texto; em cima a
+     ilustração fica quase limpa, senão a cena some atrás do véu */
+  background: linear-gradient(to top,
+              rgba(10, 18, 12, .92) 0%,
+              rgba(10, 18, 12, .72) 22%,
+              rgba(10, 18, 12, .34) 46%,
+              rgba(10, 18, 12, .06) 64%,
+              rgba(10, 18, 12, 0) 100%);
+}
+.nt-card__selo{
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #E9C7A6;
+  margin: 0 0 .5rem;
+}
+.nt-card__titulo{
+  font-family: var(--f-display);
+  font-variation-settings: 'wdth' 92, 'wght' 700;
+  font-size: clamp(1.3rem, 2.6vw, 2.5rem);
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  margin: 0;
+}
+.nt-card--pequeno .nt-card__titulo{ font-size: clamp(1.15rem, 1.9vw, 1.5rem); }
+/* card baixo: o texto ocupa quase metade dele, então o escuro precisa
+   subir mais do que no card grande para a etiqueta continuar legível */
+.nt-card--pequeno::after{
+  background: linear-gradient(to top,
+              rgba(10, 18, 12, .93) 0%,
+              rgba(10, 18, 12, .8) 34%,
+              rgba(10, 18, 12, .44) 62%,
+              rgba(10, 18, 12, .1) 86%,
+              rgba(10, 18, 12, 0) 100%);
+}
+.nt-card__resumo{
+  max-width: 46ch;
+  font-size: .95rem;
+  line-height: 1.45;
+  color: rgba(246, 241, 231, .82);
+  margin: .7rem 0 0;
+}
+.nt-card--pequeno .nt-card__resumo{ font-size: .88rem; margin-top: .45rem; }
+
+/* "Ver mais": parece botão, mas ainda não leva a lugar nenhum */
+.nt-card__acao{
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  align-self: flex-start;
+  margin-top: 1.1rem;
+  padding: .6rem 1.2rem;
+  border-radius: var(--eco-pilula);
+  background: var(--nt-urgente);
+  color: var(--nt-tinta);
+  font-size: .92rem;
+  font-weight: 600;
+  line-height: 1;
+  transition: background .3s var(--eco-suave), transform .3s var(--eco-suave);
+}
+.nt-card__acao svg{ width: 15px; height: 15px; }
+
+/* o link fica no título (é ele que o leitor de tela anuncia) e
+   o ::after estica a área clicável por cima do card inteiro */
+.nt-card__link{ color: inherit; }
+.nt-card__link::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+.nt-card:hover .nt-card__foto{ transform: scale(1.05); }
+.nt-card:hover .nt-card__acao{ background: var(--nt-urgente-2); }
+.nt-card__link:focus-visible{
+  outline: 3px solid var(--nt-tinta);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* =========================================================
+   4. Noticiários — lista à esquerda, painéis à direita
+   ========================================================= */
+.nt-noticiarios{
+  padding-block: clamp(2.5rem, 7vh, 4.5rem);
+  border-top: 1px solid var(--borda);
+}
+.nt-grade{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 20rem);
+  gap: clamp(1.6rem, 4vw, 3.4rem);
+  align-items: start;
+}
+
+/* --- a nota: foto à esquerda, texto à direita --- */
+.nt-lista{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nt-nota{
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 14rem) minmax(0, 1fr);
+  gap: clamp(1rem, 2.4vw, 1.8rem);
+  padding-block: clamp(1.3rem, 3vw, 2rem);
+  border-top: 1px solid var(--borda);
+}
+.nt-lista > li:first-child .nt-nota{ border-top: 0; padding-top: 0; }
+
+/* Dois detalhes obrigatórios aqui:
+   - align-self: start, senão o item de grid estica na altura da linha;
+   - height: auto, senão o atributo height="750" do <img> vira altura
+     fixa e o aspect-ratio é simplesmente ignorado. */
+.nt-nota__foto{
+  align-self: start;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--eco-raio);
+  background: var(--areia);
+}
+.nt-nota__selo{
+  font-size: .74rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--cinza);
+  margin: 0 0 .35rem;
+}
+.nt-nota__titulo{
+  font-size: clamp(1.05rem, 1.9vw, 1.35rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -.01em;
+  margin: 0;
+}
+.nt-nota__texto{
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--cinza);
+  margin: .5rem 0 0;
+}
+.nt-nota__pe{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem .9rem;
+  margin-top: .8rem;
+  font-size: .82rem;
+  color: var(--cinza);
+}
+/* fonte da informação: quem se importa diz de onde tirou */
+.nt-nota__fonte{
+  padding: .2rem .55rem;
+  border: 1px solid var(--borda);
+  border-radius: var(--eco-pilula);
+  font-size: .76rem;
+}
+.nt-nota__link{ color: inherit; }
+.nt-nota__link::after{ content: ""; position: absolute; inset: 0; }
+.nt-nota:hover .nt-nota__titulo{ text-decoration: underline; text-underline-offset: 3px; }
+.nt-nota__link:focus-visible{
+  outline: 2px solid var(--verde);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* --- painéis laterais --- */
+.nt-aside{
+  display: grid;
+  gap: clamp(1rem, 2.4vw, 1.6rem);
+  position: sticky;
+  top: calc(var(--nt-nav-h) + var(--nt-faixa-h) + 1.2rem);
+}
+.nt-painel{
+  border: 1px solid var(--borda);
+  border-radius: var(--nt-raio);
+  background: #fff;
+  overflow: hidden;
+}
+.nt-painel__titulo{
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  margin: 0;
+  padding: 1rem 1.15rem;
+  border-bottom: 1px solid var(--borda);
+}
+.nt-painel__lista{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nt-painel__lista > li + li{ border-top: 1px solid var(--borda); }
+
+/* "Viu isso?": miniatura à direita, como nos portais */
+.nt-viu{
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 5.2rem;
+  gap: .9rem;
+  padding: .95rem 1.15rem;
+}
+.nt-viu__titulo{
+  font-size: .95rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0;
+}
+.nt-viu__texto{
+  font-size: .82rem;
+  line-height: 1.4;
+  color: var(--cinza);
+  margin: .35rem 0 0;
+}
+.nt-viu__foto{
+  align-self: start;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 8px;
+  background: var(--areia);
+}
+.nt-viu__link{ color: inherit; }
+.nt-viu__link::after{ content: ""; position: absolute; inset: 0; }
+.nt-viu:hover .nt-viu__titulo{ text-decoration: underline; text-underline-offset: 3px; }
+
+/* "As mais lidas": número grande à esquerda */
+.nt-lida{
+  position: relative;
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  gap: .9rem;
+  align-items: start;
+  padding: .95rem 1.15rem;
+}
+.nt-lida__num{
+  font-family: var(--f-display);
+  font-variation-settings: 'wdth' 90, 'wght' 600;
+  font-size: 1.7rem;
+  line-height: 1;
+  color: var(--green-soft);
+}
+.nt-lida__titulo{
+  font-size: .95rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0;
+}
+.nt-lida__link{ color: inherit; }
+.nt-lida__link::after{ content: ""; position: absolute; inset: 0; }
+.nt-lida:hover .nt-lida__titulo{ text-decoration: underline; text-underline-offset: 3px; }
+
+/* =========================================================
+   5. Matérias — quatro vídeos
+   ========================================================= */
+.nt-materias{
+  padding-block: clamp(2.5rem, 7vh, 4.5rem);
+  border-top: 1px solid var(--borda);
+}
+.nt-videos{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.2rem, 3vw, 2.2rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nt-video{ position: relative; }
+.nt-video__moldura{
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--nt-raio);
+  background: var(--areia);
+}
+.nt-video__foto{
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  transition: transform .8s var(--eco-suave);
+}
+/* o play fica no meio da moldura, como nos vídeos dos portais */
+.nt-video__play{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: clamp(46px, 7vw, 62px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--nt-urgente);
+  color: var(--nt-tinta);
+  transition: background .3s var(--eco-suave), transform .3s var(--eco-suave);
+}
+.nt-video__play svg{ width: 42%; height: 42%; margin-left: 8%; }
+.nt-video:hover .nt-video__foto{ transform: scale(1.05); }
+.nt-video:hover .nt-video__play{
+  background: var(--nt-urgente-2);
+  transform: translate(-50%, -50%) scale(1.08);
+}
+.nt-video__titulo{
+  font-size: clamp(1rem, 1.7vw, 1.15rem);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: .8rem 0 0;
+}
+.nt-video__texto{
+  font-size: .88rem;
+  color: var(--cinza);
+  margin: .35rem 0 0;
+}
+.nt-video__link{ color: inherit; }
+.nt-video__link::after{ content: ""; position: absolute; inset: 0; }
+.nt-video:hover .nt-video__titulo{ text-decoration: underline; text-underline-offset: 3px; }
+.nt-video__link:focus-visible{
+  outline: 2px solid var(--verde);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* =========================================================
+   6. O que fazer com a notícia
+   O fecho da página: sair da leitura com alguma coisa na mão.
+   ========================================================= */
+.nt-cuidar{
+  background: var(--menta);
+  padding-block: clamp(3rem, 8vh, 5rem);
+}
+.nt-cuidar__texto{
+  max-width: 56ch;
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  line-height: 1.55;
+  color: var(--verde-escuro);
+  margin: .4rem 0 0;
+}
+.nt-acoes{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(.9rem, 2vw, 1.4rem);
+  margin-top: clamp(1.8rem, 4vw, 2.6rem);
+  list-style: none;
+  padding: 0;
+}
+.nt-acao{
+  background: rgba(255, 255, 255, .62);
+  border: 1px solid rgba(47, 107, 31, .16);
+  border-radius: var(--nt-raio);
+  padding: clamp(1.1rem, 2.2vw, 1.6rem);
+}
+.nt-acao__icone{
+  width: 28px;
+  height: 28px;
+  color: var(--verde);
+  margin-bottom: .7rem;
+}
+.nt-acao__titulo{
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 .4rem;
+}
+.nt-acao__texto{
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--cinza);
+  margin: 0;
+}
+.nt-cuidar__nota{
+  margin-top: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-size: .92rem;
+  color: var(--cinza);
+}
+
+/* =========================================================
+   7. Telas menores
+   ========================================================= */
+@media (max-width: 1020px){
+  .nt-grade{ grid-template-columns: minmax(0, 1fr); }
+  .nt-aside{
+    position: static;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 860px){
+  /* empilhado, cada card volta a ter a altura do próprio conteúdo —
+     o minmax(0,1fr) do desktop deixaria os três do tamanho do maior */
+  .nt-destaques{
+    grid-template-columns: minmax(0, 1fr);
+    grid-auto-rows: auto;
+  }
+  .nt-card--grande{ grid-row: auto; min-height: clamp(20rem, 46vh, 26rem); }
+  .nt-card--pequeno{ min-height: 13rem; }
+  .nt-videos{ grid-template-columns: minmax(0, 1fr); }
+  .nt-acoes{ grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 640px){
+  .nt-aside{ grid-template-columns: minmax(0, 1fr); }
+  /* na vertical a foto vai para cima do texto, senão sobra 6 cm de nada */
+  .nt-nota{ grid-template-columns: minmax(0, 1fr); gap: .9rem; }
+  .nt-nota__foto{ aspect-ratio: 16 / 9; }
+  .nt-faixa__trilho{ gap: 1.6rem; }
+  .nt-faixa__item{ font-size: .72rem; }
+}
+
+/* =========================================================
+   8. Movimento
+   ========================================================= */
+@media (prefers-reduced-motion: reduce){
+  .nt-card__foto,
+  .nt-card__acao,
+  .nt-video__foto,
+  .nt-video__play{ transition-duration: .01ms; }
+  .nt-card:hover .nt-card__foto,
+  .nt-video:hover .nt-video__foto{ transform: none; }
+  .nt-video:hover .nt-video__play{ transform: translate(-50%, -50%); }
+}
