@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EcoClima — Quiz do Clima</title>
-<meta name="description" content="Quiz do clima: perguntas de múltipla escolha sobre mudanças climáticas, floresta e energia.">
+<title>EcoClima — Missão Clima</title>
+<meta name="description" content="Missão Clima: quiz sobre mudanças climáticas. Cada erro esquenta o planeta. Consegue mantê-lo abaixo de +1,5 °C?">
 <link rel="icon" href="imagens/Logo-preto.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="css/jogo.css">
+<link rel="stylesheet" href="css/jogos.css">
 </head>
 <body class="jg-pagina">
 
@@ -21,12 +22,13 @@
 
 <main id="top">
 
-  <header class="jg-topo">
+  <header class="jg-topo jg-topo--jogo">
     <div class="wrap">
-      <p class="jg-etiqueta">Jogo 2</p>
-      <h1 class="jg-topo__titulo">QUIZ DO CLIMA</h1>
+      <p class="jg-etiqueta">Jogo 2 · Quiz do clima</p>
+      <h1 class="jg-topo__titulo">MISSÃO CLIMA</h1>
       <p class="jg-topo__texto">
-        Perguntas de múltipla escolha sobre mudanças climáticas, floresta e energia.
+        Você é um agente climático. Cada resposta errada esquenta o planeta:
+        consegue segurar o termômetro?
       </p>
     </div>
   </header>
@@ -34,11 +36,126 @@
   <section class="jg-tela">
     <div class="wrap">
 
-      <!-- É aqui que o jogo vai entrar quando existir. Por enquanto,
-           só o botão. -->
-      <div class="jg-palco">
-        <button class="eco-btn eco-btn--principal jg-jogar" type="button" data-soon>Jogar</button>
-        <p class="jg-palco__aviso">O jogo ainda está em construção.</p>
+      <!-- O jogo inteiro mora aqui. As telas são trocadas pelo
+           js/jogos/missao-clima.js (atributo data-tela). -->
+      <div class="jg-jogo mc" id="jogo" data-jogo="missao-clima">
+
+        <div class="jg-jogo__barra">
+          <button class="jg-mudo" type="button" data-jg-mudo>
+            <svg class="jg-mudo__ligado" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/></svg>
+            <svg class="jg-mudo__desligado" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="m22 9-6 6"/><path d="m16 9 6 6"/></svg>
+            <span data-rotulo>Desligar som</span>
+          </button>
+        </div>
+
+        <!-- ================= TELA 1: INÍCIO ================= -->
+        <section class="jg-cena jg-cena--inicio" data-tela="inicio" aria-labelledby="mc-inicio-titulo">
+          <p class="jg-cena__emblema" aria-hidden="true">🌡️</p>
+          <h2 class="jg-cena__titulo" id="mc-inicio-titulo" tabindex="-1" data-foco>Como jogar</h2>
+          <ol class="jg-regras">
+            <li>O termômetro do planeta começa em +1,2 °C. Cada erro esquenta +0,3 °C, e em +3,0 °C é colapso.</li>
+            <li>São 10 perguntas com 20 segundos cada. Quanto mais rápido você acerta, mais pontos ganha.</li>
+            <li>Três acertos seguidos esfriam o planeta −0,1 °C. E você tem um 🌱 50/50 por partida.</li>
+          </ol>
+          <p class="jg-recorde">Seu recorde: <strong data-recorde-inicio>0</strong> pontos</p>
+          <button class="eco-btn eco-btn--principal jg-jogar" type="button" data-acao="jogar">Jogar</button>
+          <p class="jg-teclas">
+            No teclado: <kbd>↑</kbd> <kbd>↓</kbd> andam entre as respostas, <kbd>1</kbd>–<kbd>4</kbd> respondem direto
+            e <kbd>Enter</kbd> confirma.
+          </p>
+        </section>
+
+        <!-- ================= TELA 2: JOGO ================= -->
+        <section class="jg-cena mc-partida" data-tela="jogo" aria-label="Partida" hidden>
+          <div class="mc-layout">
+
+            <!-- termômetro: deitado no celular, em pé no computador -->
+            <aside class="mc-termo" data-termo aria-label="Termômetro do planeta">
+              <p class="mc-termo__rotulo">Planeta</p>
+              <div class="mc-termo__tubo" role="meter" aria-label="Aquecimento do planeta"
+                   aria-valuemin="0" aria-valuemax="3" aria-valuenow="1.2" aria-valuetext="+1,2 °C" data-termo-tubo>
+                <div class="mc-termo__nivel" data-termo-nivel></div>
+                <span class="mc-termo__marca mc-termo__marca--paris" style="--pos: .5"><span>1,5° Paris</span></span>
+                <span class="mc-termo__marca" style="--pos: .6667"><span>2,0°</span></span>
+                <span class="mc-termo__marca mc-termo__marca--colapso" style="--pos: 1"><span>3,0° colapso</span></span>
+              </div>
+              <p class="mc-termo__valor" data-termo-valor>+1,2 °C</p>
+              <p class="mc-termo__estado" data-termo-estado>Dentro da meta de Paris</p>
+              <p class="mc-termo__variacao" data-termo-variacao aria-hidden="true"></p>
+            </aside>
+
+            <div class="mc-principal">
+              <div class="mc-hud">
+                <p class="mc-hud__contagem"><strong data-hud-numero>Pergunta 1 de 10</strong> <span class="mc-nivel" data-hud-nivel>Fácil</span></p>
+                <p class="mc-hud__pontos"><span data-hud-pontos>0</span> <span class="mc-hud__sufixo">pts</span></p>
+              </div>
+
+              <div class="mc-tempo" data-tempo>
+                <div class="mc-tempo__barra"><div class="mc-tempo__nivel" data-tempo-nivel></div></div>
+                <p class="mc-tempo__texto"><span data-tempo-texto>20</span> s</p>
+              </div>
+
+              <p class="mc-tipo" data-tipo>Múltipla escolha</p>
+              <h2 class="mc-pergunta" id="mc-pergunta" tabindex="-1" data-pergunta></h2>
+
+              <div class="mc-alternativas" role="group" aria-labelledby="mc-pergunta" data-alternativas></div>
+
+              <div class="mc-ajuda">
+                <button class="mc-5050" type="button" data-acao="5050">
+                  <span aria-hidden="true">🌱</span> <span data-5050-texto>50/50</span>
+                </button>
+                <p class="mc-ajuda__nota" data-5050-nota></p>
+              </div>
+
+              <!-- depois de responder: sempre a explicação -->
+              <div class="mc-retorno" data-retorno hidden>
+                <p class="mc-retorno__status" id="mc-status" data-status></p>
+                <p class="mc-retorno__texto" id="mc-explicacao" data-explicacao></p>
+                <p class="mc-retorno__clima" id="mc-clima" data-clima></p>
+                <button class="eco-btn eco-btn--principal" type="button" data-acao="proxima"
+                        aria-describedby="mc-status mc-explicacao mc-clima">Próxima</button>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ================= TELA 3: RESULTADO ================= -->
+        <section class="jg-cena jg-cena--resultado" data-tela="resultado" aria-labelledby="mc-res-titulo" hidden>
+          <h2 class="jg-cena__titulo" id="mc-res-titulo" tabindex="-1" data-foco data-res-titulo>Missão concluída</h2>
+          <p class="mc-titulo-final" data-res-rank></p>
+
+          <dl class="jg-placar jg-placar--4">
+            <div><dt>Pontos</dt><dd data-res-pontos>0</dd></div>
+            <div><dt>Recorde</dt><dd data-res-recorde>0</dd></div>
+            <div><dt>Planeta</dt><dd data-res-temp>+1,2 °C</dd></div>
+            <div><dt>Acertos</dt><dd data-res-acertos>0/10</dd></div>
+          </dl>
+          <p class="jg-novo-recorde" data-res-novo hidden>🏆 Novo recorde!</p>
+
+          <div class="jg-curiosidade">
+            <p class="jg-curiosidade__rotulo">Por que +1,5 °C?</p>
+            <p class="jg-curiosidade__texto">
+              É a meta do Acordo de Paris (2015): limitar o aquecimento global bem abaixo de 2 °C
+              em relação ao nível pré-industrial, buscando 1,5 °C. Por isso o termômetro do jogo
+              marca esse ponto.
+            </p>
+          </div>
+
+          <div class="jg-resumo">
+            <h3 class="jg-resumo__titulo" data-res-revisar-titulo>Para revisar</h3>
+            <ul class="mc-revisao" data-res-revisar></ul>
+          </div>
+
+          <details class="mc-todas">
+            <summary>Ver todas as respostas da partida</summary>
+            <ol class="mc-revisao" data-res-todas></ol>
+          </details>
+
+          <button class="eco-btn eco-btn--principal jg-jogar" type="button" data-acao="jogar">Jogar de novo</button>
+        </section>
+
+        <p class="eco-so-leitor" aria-live="polite" data-anuncio></p>
       </div>
 
       <p class="jg-centro">
@@ -60,5 +177,8 @@
 
 <script src="js/layout.js"></script>
 <script src="script.js"></script>
+<script src="js/jogos/comum.js"></script>
+<script src="js/jogos/perguntas-clima.js"></script>
+<script src="js/jogos/missao-clima.js"></script>
 </body>
 </html>

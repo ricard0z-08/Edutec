@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EcoClima — Coleta Seletiva</title>
-<meta name="description" content="Jogo da coleta seletiva: mande cada embalagem para a lixeira certa.">
+<title>EcoClima — Separa Aí!</title>
+<meta name="description" content="Separa Aí!: jogo de coleta seletiva. Mande cada resíduo da esteira para a lixeira certa e descubra as pegadinhas do descarte.">
 <link rel="icon" href="imagens/Logo-preto.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="css/jogo.css">
+<link rel="stylesheet" href="css/jogos.css">
 </head>
 <body class="jg-pagina">
 
@@ -21,12 +22,13 @@
 
 <main id="top">
 
-  <header class="jg-topo">
+  <header class="jg-topo jg-topo--jogo">
     <div class="wrap">
-      <p class="jg-etiqueta">Jogo 1</p>
-      <h1 class="jg-topo__titulo">COLETA SELETIVA</h1>
+      <p class="jg-etiqueta">Jogo 1 · Coleta seletiva</p>
+      <h1 class="jg-topo__titulo">SEPARA AÍ!</h1>
       <p class="jg-topo__texto">
-        Cada embalagem cai na tela e você manda para a lixeira certa.
+        Os resíduos chegam pela esteira. Mande cada um para a lixeira certa
+        antes que ele passe direto.
       </p>
     </div>
   </header>
@@ -34,11 +36,136 @@
   <section class="jg-tela">
     <div class="wrap">
 
-      <!-- É aqui que o jogo vai entrar quando existir. Por enquanto,
-           só o botão. -->
-      <div class="jg-palco">
-        <button class="eco-btn eco-btn--principal jg-jogar" type="button" data-soon>Jogar</button>
-        <p class="jg-palco__aviso">O jogo ainda está em construção.</p>
+      <!-- O jogo inteiro mora aqui. As telas são trocadas pelo
+           js/jogos/separa-ai.js (atributo data-tela). -->
+      <div class="jg-jogo sa" id="jogo" data-jogo="separa-ai">
+
+        <div class="jg-jogo__barra">
+          <button class="jg-mudo" type="button" data-jg-mudo>
+            <svg class="jg-mudo__ligado" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/></svg>
+            <svg class="jg-mudo__desligado" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="m22 9-6 6"/><path d="m16 9 6 6"/></svg>
+            <span data-rotulo>Desligar som</span>
+          </button>
+        </div>
+
+        <!-- ================= TELA 1: INÍCIO ================= -->
+        <section class="jg-cena jg-cena--inicio" data-tela="inicio" aria-labelledby="sa-inicio-titulo">
+          <p class="jg-cena__emblema" aria-hidden="true">♻️</p>
+          <h2 class="jg-cena__titulo" id="sa-inicio-titulo" tabindex="-1" data-foco>Como jogar</h2>
+          <ol class="jg-regras">
+            <li>Os resíduos chegam pela esteira. Arraste cada um até a lixeira certa, ou toque no item e depois na lixeira.</li>
+            <li>Acerto vale 10 pontos e pegadinha vale 20. Acertos seguidos multiplicam os pontos.</li>
+            <li>Errou ou deixou passar? Perde uma das 3 vidas, mas descobre o porquê.</li>
+          </ol>
+          <p class="jg-aviso-local">
+            <svg class="eco-icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            As regras podem mudar um pouco na sua cidade. Confira com a prefeitura!
+          </p>
+          <p class="jg-recorde">Seu recorde: <strong data-recorde-inicio>0</strong> pontos</p>
+          <button class="eco-btn eco-btn--principal jg-jogar" type="button" data-acao="jogar">Jogar</button>
+          <p class="jg-teclas">
+            No teclado: <kbd>←</kbd> <kbd>→</kbd> escolhem a lixeira, <kbd>Enter</kbd> descarta o item destacado,
+            <kbd>1</kbd>–<kbd>7</kbd> vão direto para uma lixeira e <kbd>P</kbd> pausa.
+          </p>
+        </section>
+
+        <!-- ================= TELA 2: JOGO ================= -->
+        <section class="jg-cena sa-partida" data-tela="jogo" aria-label="Partida" hidden>
+
+          <div class="sa-hud">
+            <p class="sa-hud__fase"><span class="eco-so-leitor">Fase: </span><strong data-hud-fase>Fase 1</strong> <span data-hud-nome-fase>Aprendiz</span></p>
+            <p class="sa-hud__pontos"><span data-hud-pontos>0</span> <span class="sa-hud__sufixo">pts</span></p>
+            <p class="sa-hud__combo" data-hud-combo hidden></p>
+            <p class="sa-hud__vidas" data-hud-vidas aria-label="Vidas: 3 de 3">❤️❤️❤️</p>
+            <button class="sa-hud__pausar" type="button" data-acao="pausar" aria-label="Pausar o jogo">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14"/><path d="M16 5v14"/></svg>
+            </button>
+          </div>
+
+          <div class="sa-palco">
+            <div class="sa-esteira" data-esteira>
+              <div class="sa-esteira__trilho" data-trilho></div>
+              <div class="sa-esteira__fim" aria-hidden="true"><span>fim</span></div>
+            </div>
+
+            <p class="sa-dica" data-dica>Arraste o item até a lixeira, ou toque nele e depois na lixeira.</p>
+
+            <div class="sa-lixeiras" role="group" aria-label="Lixeiras" data-lixeiras></div>
+
+            <!-- mensagem rápida da pegadinha certa -->
+            <p class="sa-elogio" data-elogio hidden></p>
+
+            <!-- explicação do erro: o jogo pausa enquanto ela aparece -->
+            <div class="jg-painel sa-explicacao" data-explicacao role="alertdialog"
+                 aria-modal="false" aria-labelledby="sa-exp-titulo" aria-describedby="sa-exp-texto" hidden>
+              <div class="jg-painel__caixa">
+                <p class="sa-explicacao__lixeira" data-exp-lixeira aria-hidden="true"></p>
+                <h3 class="jg-painel__titulo" id="sa-exp-titulo" data-exp-titulo>Não é aí!</h3>
+                <p class="jg-painel__texto" id="sa-exp-texto" data-exp-texto></p>
+                <button class="eco-btn eco-btn--principal" type="button" data-acao="entendi">Entendi</button>
+                <span class="sa-explicacao__tempo" data-exp-tempo aria-hidden="true"></span>
+              </div>
+            </div>
+
+            <!-- pausa -->
+            <div class="jg-painel" data-pausa role="dialog" aria-modal="false" aria-labelledby="sa-pausa-titulo" hidden>
+              <div class="jg-painel__caixa">
+                <h3 class="jg-painel__titulo" id="sa-pausa-titulo">Jogo pausado</h3>
+                <p class="jg-painel__texto">A esteira para até você voltar.</p>
+                <div class="jg-painel__botoes">
+                  <button class="eco-btn eco-btn--principal" type="button" data-acao="continuar">Continuar</button>
+                  <button class="eco-btn eco-btn--secundario" type="button" data-acao="desistir">Encerrar partida</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= ENTRE FASES ================= -->
+        <section class="jg-cena jg-cena--fase" data-tela="fase" aria-labelledby="sa-fase-titulo" hidden>
+          <h2 class="jg-cena__titulo" id="sa-fase-titulo" tabindex="-1" data-foco data-fase-titulo>Fase concluída!</h2>
+          <p class="jg-estrelas" data-fase-estrelas></p>
+          <p class="jg-cena__texto" data-fase-resumo></p>
+          <div class="jg-curiosidade">
+            <p class="jg-curiosidade__rotulo">Você sabia?</p>
+            <p class="jg-curiosidade__texto" data-fase-curiosidade></p>
+          </div>
+          <p class="jg-cena__texto" data-fase-novidade></p>
+          <button class="eco-btn eco-btn--principal jg-jogar" type="button" data-acao="proxima-fase">Próxima fase</button>
+        </section>
+
+        <!-- ================= TELA 3: RESULTADO ================= -->
+        <section class="jg-cena jg-cena--resultado" data-tela="resultado" aria-labelledby="sa-res-titulo" hidden>
+          <h2 class="jg-cena__titulo" id="sa-res-titulo" tabindex="-1" data-foco data-res-titulo>Fim de jogo</h2>
+          <p class="jg-cena__texto" data-res-subtitulo></p>
+
+          <dl class="jg-placar">
+            <div><dt>Pontos</dt><dd data-res-pontos>0</dd></div>
+            <div><dt>Recorde</dt><dd data-res-recorde>0</dd></div>
+            <div><dt>Acertos</dt><dd data-res-acertos>0</dd></div>
+          </dl>
+          <p class="jg-novo-recorde" data-res-novo hidden>🏆 Novo recorde!</p>
+
+          <div class="jg-resumo">
+            <h3 class="jg-resumo__titulo">O que você aprendeu</h3>
+            <ul class="jg-resumo__lista" data-res-resumo></ul>
+          </div>
+
+          <div class="jg-resumo">
+            <h3 class="jg-resumo__titulo">Itens que você errou</h3>
+            <ul class="sa-erros" data-res-erros></ul>
+          </div>
+
+          <div class="jg-curiosidade">
+            <p class="jg-curiosidade__rotulo">Você sabia?</p>
+            <p class="jg-curiosidade__texto" data-res-curiosidade></p>
+          </div>
+
+          <button class="eco-btn eco-btn--principal jg-jogar" type="button" data-acao="jogar">Jogar de novo</button>
+        </section>
+
+        <!-- avisos para leitor de tela -->
+        <p class="eco-so-leitor" aria-live="polite" data-anuncio></p>
       </div>
 
       <p class="jg-centro">
@@ -60,5 +187,8 @@
 
 <script src="js/layout.js"></script>
 <script src="script.js"></script>
+<script src="js/jogos/comum.js"></script>
+<script src="js/jogos/dados-coleta.js"></script>
+<script src="js/jogos/separa-ai.js"></script>
 </body>
 </html>
